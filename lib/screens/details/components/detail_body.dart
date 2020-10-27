@@ -37,7 +37,7 @@ class DetailBody extends StatelessWidget {
                   margin: EdgeInsets.only(top: size.height * 0.3),
                   height: 500,
                   decoration: BoxDecoration(
-                      color: kGrey,
+                      color: kLightGrey2,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
