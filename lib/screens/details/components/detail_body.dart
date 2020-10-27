@@ -67,6 +67,7 @@ class DetailBody extends StatelessWidget {
                                 "Notizen:",
                                 style: TextStyle(color: kBlack, fontSize: 15),
                               ),
+
                               SizedBox(
                                 height: 2,
                                 width: size.width *0.6,
@@ -77,13 +78,17 @@ class DetailBody extends StatelessWidget {
                                 onPressed: (){}, //TODO: open editing mode for text
                               )
                             ],
-                          )),
-                      Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Text(
-                          notes
-                          //overflow: TextOverflow.ellipsis,
+                          )
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.only(start: size.width*0.05),
+                          child: Text(
+                          notes,
+                          style: TextStyle(color: kBlack),
                         ),
+                        )
                       )
                     ],
                   ),
