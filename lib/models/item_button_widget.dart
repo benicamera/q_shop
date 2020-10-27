@@ -1,6 +1,6 @@
 /*  item_button_widget.dart
 *   @author: Benjamin Dangl
-*   @version: 26.10.2020
+*   @version: 27.10.2020
  */
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -91,11 +91,12 @@ class ItemWidgetRoot extends StatelessWidget {
               Padding(
                 padding:
                 EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-                child: AutoSizeText(
+                child: Hero(tag: "${itemName + "2"}",
+                  child: AutoSizeText(
                   shortItem(itemName),
                   style: TextStyle(color: kWhite),
                   maxLines: 1,
-                ),
+                ),)
               )
             ],
           ),

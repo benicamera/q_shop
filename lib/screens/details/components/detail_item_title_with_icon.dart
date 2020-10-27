@@ -1,6 +1,6 @@
 /*  detail_item_title_with_icon.dart
 *   @author: Benjamin Dangl
-*   @version: 26.10.2020
+*   @version: 27.10.2020
  */
 
 import 'package:flutter/material.dart';
@@ -29,11 +29,13 @@ class DetailItemTitleWithIcon extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
+          Hero(
+            tag: "${itemName + "2"}",
+            child: Text(
             itemName,
             style: Theme.of(context).textTheme.headline4.copyWith(
                 color: kLightGrey2, fontWeight: FontWeight.bold),
-          ),
+          ),),
           Text(
             itemCat,
             style: TextStyle(color: kDarkGrey1),
