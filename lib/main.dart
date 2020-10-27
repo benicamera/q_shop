@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/main/main_screen.dart';
+
+import 'screens/main/main_screen.dart';
+
 
 
 void main() => runApp(MyApp());
