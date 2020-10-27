@@ -1,3 +1,8 @@
+/*  item_button_widget.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/icons.dart';

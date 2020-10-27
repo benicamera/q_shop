@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+/*  main_shopping_list_view.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
 
+import 'package:flutter/material.dart';
 import 'item_button_widget.dart';
 
 class ShoppingListView extends StatefulWidget {

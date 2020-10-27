@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:q_shop/icons.dart';
-import 'package:q_shop/screens/details/components/detail_body.dart';
+/*  details_screen.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
 
+import 'package:flutter/material.dart';
+import 'package:q_shop/screens/details/components/detail_body.dart';
 import '../../constants.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -19,7 +22,7 @@ class DetailsScreen extends StatelessWidget {
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomAppBar(),
-      body: DetailBody(itemIcon: itemIcon, weight: weight, itemName: itemName, itemCat: "Obst",),
+      body: DetailBody(itemIcon: itemIcon, weight: weight, itemName: itemName, itemCat: "Obst",), //TODO: Get cat
     );
   }
 

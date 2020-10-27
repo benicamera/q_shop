@@ -1,6 +1,10 @@
+/*  detail_body.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-
 import 'detail_amount_select.dart';
 import 'detail_item_title_with_icon.dart';
 

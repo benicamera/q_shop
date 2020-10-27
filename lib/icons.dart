@@ -1,3 +1,8 @@
+/*  icons.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:flutter/widgets.dart';
 ////ITEMS CONSTANTS:/// (je nach IDE sind die Icons links NICHT die deklarierten Icons
 //Obst:
