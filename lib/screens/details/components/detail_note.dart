@@ -1,3 +1,8 @@
+/*  detail_note.dart
+*   @author: Benjamin Dangl
+*   @version: 27.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
