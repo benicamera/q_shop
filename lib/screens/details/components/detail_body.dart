@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
 import 'detail_amount_select.dart';
 import 'detail_item_title_with_icon.dart';
+import 'detail_note.dart';
 
 class DetailBody extends StatelessWidget {
   final String itemName;
@@ -58,38 +59,7 @@ class DetailBody extends StatelessWidget {
                         height: size.height * 0.03,
                         width: 20,
                       ),
-                      Padding(
-                          padding:
-                          EdgeInsetsDirectional.only(start: 10, end: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                "Notizen:",
-                                style: TextStyle(color: kBlack, fontSize: 15),
-                              ),
-
-                              SizedBox(
-                                height: 2,
-                                width: size.width *0.6,
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.edit, color: kBlack,),
-                                iconSize: 15,
-                                onPressed: (){}, //TODO: open editing mode for text
-                              )
-                            ],
-                          )
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.only(start: size.width*0.05),
-                          child: Text(
-                          notes,
-                          style: TextStyle(color: kBlack),
-                        ),
-                        )
-                      )
+                      DetailNote(size: size, notes: notes)
                     ],
                   ),
                 ),
@@ -106,3 +76,4 @@ class DetailBody extends StatelessWidget {
     );
   }
 }
+
