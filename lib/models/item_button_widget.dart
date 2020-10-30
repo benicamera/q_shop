@@ -13,8 +13,9 @@ import '../constants.dart';
 class ItemWidget extends StatelessWidget {
   final String itemName;
   final String itemWeight;
+  final bool isProposals;
 
-  ItemWidget({this.itemName, this.itemWeight});
+  ItemWidget({this.itemName, this.itemWeight, this.isProposals});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class ItemWidget extends StatelessWidget {
           print("tapped");
           Navigator.push(context, MaterialPageRoute(builder: (context) =>
               DetailsScreen(
-                itemName: itemName, weight: itemWeight, itemIcon: apfel,)));
+                itemName: itemName, weight: itemWeight, itemIcon: apfel, isProposal: this.isProposals,)));
         }, //TODO: Details aufrufen
         child: Container(
           child: new Stack(
@@ -82,7 +83,7 @@ class ItemWidgetRoot extends StatelessWidget {
                       right: kDefPadding / 2,
                       top: kDefPadding / 2),
                   child: Hero(
-                    tag: "apfel1",
+                    tag: (itemName + "1"),
                       child: Icon(
                     itemIcon, //TODO: Item icon hinzufügen
                     color: kBluGreyS1,

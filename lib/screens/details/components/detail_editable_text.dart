@@ -14,7 +14,7 @@ class DetailEditableText extends StatefulWidget {
 class _DetailEditableTextState extends State<DetailEditableText> {
   bool _isEditingText = false;
   TextEditingController _editingController;
-  String initialText = "Initial Text"; //TODO: get note
+  String initialText = "Platz für Notizen"; //TODO: get note
 
   @override
   void initState() {
@@ -34,6 +34,7 @@ class _DetailEditableTextState extends State<DetailEditableText> {
           style: TextStyle(color: kBlack),
           onSubmitted: (newValue){
             setState(() {
+              //TODO: save text
               initialText = newValue;
               _isEditingText =false;
             });

@@ -1,8 +1,7 @@
 /*  details_screen.dart
 *   @author: Benjamin Dangl
-*   @version: 26.10.2020
+*   @version: 30.10.2020
  */
-
 import 'package:flutter/material.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
 import '../../constants.dart';
@@ -11,8 +10,9 @@ class DetailsScreen extends StatelessWidget {
   final String itemName;
   final String weight;
   final IconData itemIcon;
+  final bool isProposal;
 
-  const DetailsScreen({Key key, this.itemName, this.weight, this.itemIcon})
+  const DetailsScreen({Key key, this.itemName, this.weight, this.itemIcon, this.isProposal})
       : super(key: key);
 
 //TODO: SAVE EVERYTHING WHEN GOING BACK
@@ -34,7 +34,7 @@ class DetailsScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(icon: Icon(Icons.check, color: kGreen,), onPressed: (){},),//TODO: action hinzufügen
-          IconButton(icon: Icon(Icons.delete, color: kRed,), onPressed: (){},), //TODO: action hinzufügen
+          (isProposal)?IconButton(icon: Icon(Icons.add, color: kGreen,), onPressed: (){},) : IconButton(icon: Icon(Icons.delete, color: kRed,), onPressed: (){},), //TODO: action hinzufügen
         ],
       ),
     );

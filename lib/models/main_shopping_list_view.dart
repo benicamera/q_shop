@@ -22,16 +22,20 @@ class _ShoppingListView extends State<ShoppingListView> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: entfernen
+    list.add(["Zitrone", "4 Stk."],);
+    list.add(["Bier", "1 l"],);
+    list.add(["Brot", "0,5 kg"],);
     return GridView.builder(
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
       scrollDirection: Axis.vertical,
       primary: false,
       reverse: false,
       shrinkWrap: true,
-      itemCount: this.isProposals == true ? 0 : 1, //TODO: ABSOLUT NICHTS DOPPELT AUF DEN LISTEN HABEN!!
+      itemCount: this.isProposals == true ? list.length ~/ 2 : 1, //TODO: ABSOLUT NICHTS DOPPELT AUF DEN LISTEN HABEN!!
       physics: ScrollPhysics(),
       itemBuilder: (context, int i){
-        return ItemWidget(
+        return (isProposals)? ItemWidget(itemName: list[i][0], itemWeight: list[i][1], isProposals: true): ItemWidget(
           itemName: "Apfel",
           itemWeight: "2 kg",)
         ; //TODO: Liste automatisch übernehmen

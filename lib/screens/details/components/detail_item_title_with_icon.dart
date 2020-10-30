@@ -30,7 +30,7 @@ class DetailItemTitleWithIcon extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Hero(
-            tag: "${itemName + "2"}",
+            tag: (itemName + "2"),
             child: Text(
             itemName,
             style: Theme.of(context).textTheme.headline4.copyWith(
@@ -45,7 +45,7 @@ class DetailItemTitleWithIcon extends StatelessWidget {
               Padding(
                 padding: EdgeInsetsDirectional.only(
                     start: size.width / 2.5),
-                child: Hero(tag: "apfel1", child: Icon(
+                child: Hero(tag: (itemName + "1"), child: Icon(
                   itemIcon,
                   color: kBluGreyS1,
                   size: 200,
