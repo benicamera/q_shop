@@ -1,20 +1,24 @@
 /*  detail_note.dart
 *   @author: Benjamin Dangl
-*   @version: 27.10.2020
+*   @version: 30.10.2020
  */
 
 import 'package:flutter/material.dart';
+import 'package:q_shop/screens/details/components/detail_editable_text.dart';
 import '../../../constants.dart';
 
 class DetailNote extends StatelessWidget {
-  const DetailNote({
+
+  DetailNote({
     Key key,
     @required this.size,
     @required this.notes,
+
   }) : super(key: key);
 
   final Size size;
   final String notes;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +36,6 @@ class DetailNote extends StatelessWidget {
               height: 2,
               width: size.width *0.6,
             ),
-            IconButton(
-              icon: Icon(Icons.edit, color: kBlack,),
-              iconSize: 15,
-              onPressed: (){}, //TODO: open editing mode for text
-            )
           ],
         )
     ),
@@ -44,11 +43,10 @@ class DetailNote extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: EdgeInsetsDirectional.only(start: size.width*0.05),
-            child: Text(
-              notes,
-              style: TextStyle(color: kBlack),
-            ),
+            child: DetailEditableText(),
           )
-      )],);
+      )
+    ],
+    );
   }
 }
