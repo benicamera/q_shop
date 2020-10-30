@@ -91,13 +91,13 @@ class ItemWidgetRoot extends StatelessWidget {
               Padding(
                 padding:
                 EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-                child: Hero(tag: "${itemName + "2"}",
-                  child: AutoSizeText(
+                child:
+               AutoSizeText(
                   shortItem(itemName),
                   style: TextStyle(color: kWhite),
                   maxLines: 1,
                 ),)
-              )
+
             ],
           ),
         ));
