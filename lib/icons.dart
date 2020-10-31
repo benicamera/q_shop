@@ -29,7 +29,7 @@ const IconData fisch = IconData(0xe911, fontFamily: 'CustItems');
 //Tierische Produkte:
 const IconData kaese = IconData(0xe90b, fontFamily: 'CustItems');
 const IconData ei = IconData(0xe916, fontFamily: 'CustItems');
-//Fehlt: Milch,
+const IconData milch = IconData(0xe900, fontFamily: 'CustItems1');
 
 //Getreide Produkte: ODER Produkte zum Backen
 const IconData mehl = IconData(0xe909, fontFamily: 'CustItems');
@@ -38,7 +38,9 @@ const IconData mehl = IconData(0xe909, fontFamily: 'CustItems');
 //Backwaren:
 const IconData toast = IconData(0xe903, fontFamily: 'CustItems');
 const IconData brot = IconData(0xe914, fontFamily: 'CustItems');
-//Fehlt: Bretzel, Weckle
+const IconData brezel = IconData(0xe901, fontFamily: 'CustItems1');
+const IconData weckle = IconData(0xe904, fontFamily: 'CustItems1');
+const IconData aehre = IconData(0xe902, fontFamily: 'CustItems1');
 
 //Fertiggerichte:
 const IconData nudel2 = IconData(0xe905, fontFamily: 'CustItems');
@@ -53,6 +55,7 @@ const IconData eis = IconData(0xe913, fontFamily: 'CustItems');
 const IconData bonbon = IconData(0xe915, fontFamily: 'CustItems');
 
 //Allgemein:
+const IconData plus = IconData(0xe903, fontFamily: 'CustItems1');
 //Vielleicht noch eine schneeflocke für tiefkühlprodukte
 //Für jede Kategorie noch ein allgemeines Icon
 

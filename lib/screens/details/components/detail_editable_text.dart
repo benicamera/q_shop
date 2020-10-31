@@ -52,7 +52,7 @@ class _DetailEditableTextState extends State<DetailEditableText> {
     child: Text(
     initialText,
     style: TextStyle(
-    color: Colors.black,
+    color: kBlack,
     fontSize: 18.0,
     ),
     ));
