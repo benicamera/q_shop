@@ -14,8 +14,19 @@ class ItemWidget extends StatelessWidget {
   final String itemName;
   final String itemWeight;
   final bool isProposals;
+  final bool isNewItem;
 
-  ItemWidget({this.itemName, this.itemWeight, this.isProposals});
+  ItemWidget({this.itemName, this.itemWeight, this.isProposals, this.isNewItem});
+
+  void toDetailScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>
+        DetailsScreen(
+          itemName: itemName, weight: itemWeight, itemIcon: apfel, isProposal: this.isProposals,)));
+  }
+
+  void toNewItem(BuildContext context){
+    print("To new Item");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +36,18 @@ class ItemWidget extends StatelessWidget {
         }, //TODO: Beweglich Löschen oder abhaken
         onTap: () {
           print("tapped");
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-              DetailsScreen(
-                itemName: itemName, weight: itemWeight, itemIcon: apfel, isProposal: this.isProposals,)));
+          isNewItem? toNewItem(context) : toDetailScreen(context);
         }, //TODO: Details aufrufen
         child: Container(
           child: new Stack(
             alignment: Alignment.bottomRight,
             children: <Widget>[
               ItemWidgetRoot(
-                itemName: itemName,
-                itemIcon: apfel, //TODO: get icon
+                itemName: (isNewItem)? "Produkt hinzufügen" : itemName,
+                itemIcon: (isNewItem)? plus : apfel, //TODO: get icon
               ),
               Text(
-                itemWeight, //TODO: Menge hinzufügen
+                (isNewItem)? "" : itemWeight, //TODO: Menge hinzufügen
                 style: TextStyle(
                     color: kWhite, fontWeight: FontWeight.bold, fontSize: 20),
               ),
