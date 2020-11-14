@@ -1,6 +1,11 @@
+/*  main_screen.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/main/components/main_body.dart';
+import 'components/main_body.dart';
 
 class MainScreen extends StatefulWidget {
   @override

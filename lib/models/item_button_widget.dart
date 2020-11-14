@@ -1,3 +1,8 @@
+/*  item_button_widget.dart
+*   @author: Benjamin Dangl
+*   @version: 27.10.2020
+ */
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/icons.dart';
@@ -8,8 +13,20 @@ import '../constants.dart';
 class ItemWidget extends StatelessWidget {
   final String itemName;
   final String itemWeight;
+  final bool isProposals;
+  final bool isNewItem;
 
-  ItemWidget({this.itemName, this.itemWeight});
+  ItemWidget({this.itemName, this.itemWeight, this.isProposals, this.isNewItem});
+
+  void toDetailScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>
+        DetailsScreen(
+          itemName: itemName, weight: itemWeight, itemIcon: apfel, isProposal: this.isProposals,)));
+  }
+
+  void toNewItem(BuildContext context){
+    print("To new Item");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +36,18 @@ class ItemWidget extends StatelessWidget {
         }, //TODO: Beweglich Löschen oder abhaken
         onTap: () {
           print("tapped");
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-              DetailsScreen(
-                itemName: itemName, weight: itemWeight, itemIcon: apfel,)));
+          isNewItem? toNewItem(context) : toDetailScreen(context);
         }, //TODO: Details aufrufen
         child: Container(
           child: new Stack(
             alignment: Alignment.bottomRight,
             children: <Widget>[
               ItemWidgetRoot(
-                itemName: itemName,
-                itemIcon: apfel, //TODO: get icon
+                itemName: (isNewItem)? "Produkt hinzufügen" : itemName,
+                itemIcon: (isNewItem)? plus : apfel, //TODO: get icon
               ),
               Text(
-                itemWeight, //TODO: Menge hinzufügen
+                (isNewItem)? "" : itemWeight, //TODO: Menge hinzufügen
                 style: TextStyle(
                     color: kWhite, fontWeight: FontWeight.bold, fontSize: 20),
               ),
@@ -77,7 +92,7 @@ class ItemWidgetRoot extends StatelessWidget {
                       right: kDefPadding / 2,
                       top: kDefPadding / 2),
                   child: Hero(
-                    tag: "apfel1",
+                    tag: (itemName + "1"),
                       child: Icon(
                     itemIcon, //TODO: Item icon hinzufügen
                     color: kBluGreyS1,
@@ -86,12 +101,13 @@ class ItemWidgetRoot extends StatelessWidget {
               Padding(
                 padding:
                 EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-                child: AutoSizeText(
+                child:
+               AutoSizeText(
                   shortItem(itemName),
                   style: TextStyle(color: kWhite),
                   maxLines: 1,
-                ),
-              )
+                ),)
+
             ],
           ),
         ));

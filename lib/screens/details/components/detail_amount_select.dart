@@ -1,6 +1,10 @@
+/*  detail_amount_select.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import '../../../constants.dart';
 
 class DetailAmount extends StatefulWidget {

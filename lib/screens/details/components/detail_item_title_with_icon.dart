@@ -1,3 +1,8 @@
+/*  detail_item_title_with_icon.dart
+*   @author: Benjamin Dangl
+*   @version: 27.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
 
@@ -24,11 +29,13 @@ class DetailItemTitleWithIcon extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
+          Hero(
+            tag: (itemName + "2"),
+            child: Text(
             itemName,
             style: Theme.of(context).textTheme.headline4.copyWith(
                 color: kLightGrey2, fontWeight: FontWeight.bold),
-          ),
+          ),),
           Text(
             itemCat,
             style: TextStyle(color: kDarkGrey1),
@@ -38,7 +45,7 @@ class DetailItemTitleWithIcon extends StatelessWidget {
               Padding(
                 padding: EdgeInsetsDirectional.only(
                     start: size.width / 2.5),
-                child: Hero(tag: "apfel1", child: Icon(
+                child: Hero(tag: (itemName + "1"), child: Icon(
                   itemIcon,
                   color: kBluGreyS1,
                   size: 200,

@@ -1,10 +1,13 @@
+/*  main_body.dart
+*   @author: Benjamin Dangl
+*   @version: 25.10.2020
+ */
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/models/main_createlist_button_big.dart';
 import 'package:q_shop/models/main_shopping_list_view.dart';
 import 'package:q_shop/models/main_divider_bar.dart';
-
-import '../../../constants.dart';
 
 class Main_Body extends StatefulWidget {
   @override
@@ -15,10 +18,10 @@ class _Main_BodyState extends State<Main_Body> {
   //TODO: Liste kommt von JSON.
   var shop_list = new List();
   _Main_BodyState(){
-    for(var i = 0; i <= 0; i++) {
-      shop_list.add(["Apfelsinenmus", /*"2 kg"*/]);
-    }
-    print(shop_list);
+    shop_list.add(["Zitrone", "4 Stk."],);
+    shop_list.add(["Bier", "1 l"],);
+    shop_list.add(["Brot", "0,5 kg"],);
+    shop_list.add(["Fleisch", "500 g"]);
   }
 
   //TODO: Kommt von JSON-Liste. Davor das Script ausführen

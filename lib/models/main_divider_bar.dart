@@ -1,5 +1,9 @@
+/*  main_divider_bar.dart
+*   @author: Benjamin Dangl
+*   @version: 23.10.2020
+ */
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:q_shop/constants.dart';
 
 class DividerBar extends StatelessWidget {

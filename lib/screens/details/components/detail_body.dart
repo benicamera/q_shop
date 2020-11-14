@@ -1,8 +1,13 @@
+/*  detail_body.dart
+*   @author: Benjamin Dangl
+*   @version: 26.10.2020
+ */
+
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-
 import 'detail_amount_select.dart';
 import 'detail_item_title_with_icon.dart';
+import 'detail_note.dart';
 
 class DetailBody extends StatelessWidget {
   final String itemName;
@@ -32,7 +37,7 @@ class DetailBody extends StatelessWidget {
                   margin: EdgeInsets.only(top: size.height * 0.3),
                   height: 500,
                   decoration: BoxDecoration(
-                      color: kGrey,
+                      color: kLightGrey2,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
@@ -54,33 +59,7 @@ class DetailBody extends StatelessWidget {
                         height: size.height * 0.03,
                         width: 20,
                       ),
-                      Padding(
-                          padding:
-                          EdgeInsetsDirectional.only(start: 10, end: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                "Notizen:",
-                                style: TextStyle(color: kBlack, fontSize: 15),
-                              ),
-                              SizedBox(
-                                height: 2,
-                                width: size.width *0.6,
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.edit, color: kBlack,),
-                                iconSize: 15,
-                                onPressed: (){}, //TODO: open editing mode for text
-                              )
-                            ],
-                          )),
-                      Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Text(
-                          notes
-                          //overflow: TextOverflow.ellipsis,
-                        ),
-                      )
+                      DetailNote(size: size, notes: notes)
                     ],
                   ),
                 ),
@@ -97,3 +76,4 @@ class DetailBody extends StatelessWidget {
     );
   }
 }
+

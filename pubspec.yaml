@@ -79,6 +79,9 @@ flutter:
     - family: CustItems
       fonts:
         - asset: assets/fonts/icomoon.ttf
+    - family: CustItems1
+      fonts:
+        - asset: assets/fonts/1.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

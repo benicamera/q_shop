@@ -1,3 +1,8 @@
+/*  constants.dart
+*   @author: Benjamin Dangl
+*   @version: 21.10.2020
+ */
+
 import 'package:flutter/material.dart';
 
 /////////COLORS://////////0xFF=Opacity
