@@ -1,10 +1,11 @@
 /*  main_screen.dart
 *   @author: Benjamin Dangl
-*   @version: 26.10.2020
+*   @version: 14.11.2020
  */
 
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/screens/createItem/createItem_screen.dart';
 import 'components/main_body.dart';
 
 class MainScreen extends StatefulWidget {
@@ -47,7 +48,9 @@ class _MainScreenState extends State<MainScreen> {
           ),
           tooltip: null,
           onPressed: () {
-            print("Item erstellen");
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => CreateItemScreen()
+            ));
           } /*TODO: Item erstellen aufrufen*/,
         ),
         IconButton(

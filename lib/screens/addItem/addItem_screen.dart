@@ -10,6 +10,7 @@ import 'package:q_shop/models/main_divider_bar.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
 
 import '../../icons.dart';
+import 'components/searchResult.dart';
 import 'components/searchbar.dart';
 
 class AddItemScreen extends StatelessWidget {
@@ -102,58 +103,4 @@ class AddItemScreen extends StatelessWidget {
   }
 }
 
-class SearchResult extends StatelessWidget {
-  const SearchResult({
-    Key key,
-    @required this.item,
-  }) : super(key: key);
 
-  final item;
-
-  void toDetailScreen(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => DetailsScreen(
-                  itemName: item,
-                  weight: "1 Stk",
-                  itemIcon: apfel,
-                  isProposal: true,
-                )));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          (item == "Produkt erstellen")
-              ? print("Produkt erstellen..")
-              : toDetailScreen(context);
-        },
-        child: Container(
-          height: MediaQuery.of(context).size.height / 15,
-          width: MediaQuery.of(context).size.width * 0.96,
-          decoration: BoxDecoration(
-            color: kDarkGrey1,
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          ),
-          child: Center(
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width / 10),
-                  child: Text(
-                    item,
-                    style: TextStyle(
-                        fontSize: 22,
-                        color:
-                            kLightGrey2), //TODO: Icon einfügen und automatic font
-                  ),
-                )
-              ],
-            ),
-          ),
-        ));
-  }
-}
