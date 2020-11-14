@@ -6,6 +6,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/icons.dart';
+import 'package:q_shop/screens/addItem/addItem_screen.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
 
 import '../constants.dart';
@@ -26,6 +27,8 @@ class ItemWidget extends StatelessWidget {
 
   void toNewItem(BuildContext context){
     print("To new Item");
+    Navigator.push(context, MaterialPageRoute(builder: (context) =>
+        AddItemScreen()));
   }
 
   @override
