@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-
+import 'components/shopping_body.dart';
 
 class ShoppingScreen extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     return Scaffold(
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
-      body: Shopping_Body(),
+      body: ShoppingScreen(),
       bottomNavigationBar: OwnBottomNavigationBar(selectedItem: 0,),
     );
   }

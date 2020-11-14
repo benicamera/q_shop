@@ -6,7 +6,3 @@ import 'package:q_shop/models/main_divider_bar.dart';
 
 import '../../../constants.dart';
 
-class Shopping_Body extends StatefulWidget {
-  @override
-  _Shopping_BodyState createState() => _Shopping_BodyState();
-}
