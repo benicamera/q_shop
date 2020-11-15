@@ -32,6 +32,7 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
     if (_isEditingText)
       return Center(
         child: TextField(
+          maxLength: 45,
           style: Theme.of(context).textTheme.headline4.copyWith(
               color: kLightGrey2, fontWeight: FontWeight.bold),
           onSubmitted: (newValue){
