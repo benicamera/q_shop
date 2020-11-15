@@ -31,6 +31,7 @@ class _DetailEditableTextState extends State<DetailEditableText> {
     if (_isEditingText)
       return Center(
         child: TextField(
+          maxLength: 300,
           style: TextStyle(color: kBlack),
           onSubmitted: (newValue){
             setState(() {

@@ -18,8 +18,8 @@ class CreateItem_Title_Icon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: kDefPadding, vertical: kDefPadding * 2),
+      padding: EdgeInsets.symmetric(
+          vertical: kDefPadding * 2, horizontal: MediaQuery.of(context).size.width / 21),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -35,7 +35,7 @@ class CreateItem_Title_Icon extends StatelessWidget {
                     child: Icon(
                     Icons.add,
                     color: kBluGreyS1,
-                    size: 200,
+                      size: MediaQuery.of(context).size.width * MediaQuery.of(context).size.height / 1360,
                   ),)
               )
             ],

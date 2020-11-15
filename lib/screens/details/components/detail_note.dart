@@ -43,9 +43,8 @@ class DetailNote extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: EdgeInsetsDirectional.only(start: size.width*0.05),
-            child: DetailEditableText(),
+            child: DetailEditableText(),),
           )
-      )
     ],
     );
   }

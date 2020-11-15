@@ -21,11 +21,13 @@ class DetailItemTitleWithIcon extends StatelessWidget {
   final Size size;
   final IconData itemIcon;
 
+
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: kDefPadding, vertical: kDefPadding * 2),
+      padding: EdgeInsets.symmetric(
+          vertical: kDefPadding * 2, horizontal: width / 21),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -44,11 +46,11 @@ class DetailItemTitleWithIcon extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsetsDirectional.only(
-                    start: size.width / 2.5),
+                    start: size.width / 2.8),
                 child: Hero(tag: (itemName + "1"), child: Icon(
                   itemIcon,
                   color: kBluGreyS1,
-                  size: 200,
+                  size: size.width*size.height / 1360,
                 ),)
               )
             ],

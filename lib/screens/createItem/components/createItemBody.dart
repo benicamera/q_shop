@@ -33,7 +33,7 @@ class CreateItemBody extends StatelessWidget {
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(top: size.height * 0.3),
-                  height: 500,
+                  height: 5000,
                   decoration: BoxDecoration(
                       color: kLightGrey2,
                       borderRadius: BorderRadius.only(
@@ -57,7 +57,8 @@ class CreateItemBody extends StatelessWidget {
                         height: size.height * 0.03,
                         width: 20,
                       ),
-                      DetailNote(size: size, notes: notes)
+                      SingleChildScrollView(
+                        child: DetailNote(size: size, notes: notes))
                     ],
                   ),
                 ),

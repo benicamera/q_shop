@@ -17,18 +17,25 @@ class ItemWidget extends StatelessWidget {
   final bool isProposals;
   final bool isNewItem;
 
-  ItemWidget({this.itemName, this.itemWeight, this.isProposals, this.isNewItem});
+  ItemWidget(
+      {this.itemName, this.itemWeight, this.isProposals, this.isNewItem});
 
-  void toDetailScreen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>
-        DetailsScreen(
-          itemName: itemName, weight: itemWeight, itemIcon: apfel, isProposal: this.isProposals,)));
+  void toDetailScreen(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => DetailsScreen(
+                  itemName: itemName,
+                  weight: itemWeight,
+                  itemIcon: apfel,
+                  isProposal: this.isProposals,
+                )));
   }
 
-  void toNewItem(BuildContext context){
+  void toNewItem(BuildContext context) {
     print("To new Item");
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>
-        AddItemScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AddItemScreen()));
   }
 
   @override
@@ -39,20 +46,24 @@ class ItemWidget extends StatelessWidget {
         }, //TODO: Beweglich Löschen oder abhaken
         onTap: () {
           print("tapped");
-          isNewItem? toNewItem(context) : toDetailScreen(context);
+          isNewItem ? toNewItem(context) : toDetailScreen(context);
         }, //TODO: Details aufrufen
         child: Container(
           child: new Stack(
             alignment: Alignment.bottomRight,
             children: <Widget>[
               ItemWidgetRoot(
-                itemName: (isNewItem)? "Produkt hinzufügen" : itemName,
-                itemIcon: (isNewItem)? plus : apfel, //TODO: get icon
+                itemName: (isNewItem) ? "Produkt hinzufügen" : itemName,
+                itemIcon: (isNewItem) ? plus : apfel, //TODO: get icon
               ),
               Text(
-                (isNewItem)? "" : itemWeight, //TODO: Menge hinzufügen
+                (isNewItem) ? "" : itemWeight, //TODO: Menge hinzufügen
                 style: TextStyle(
-                    color: kWhite, fontWeight: FontWeight.bold, fontSize: 20),
+                    color: kWhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.height *
+                        MediaQuery.of(context).size.width /
+                        17000),
               ),
             ],
           ),
@@ -95,22 +106,21 @@ class ItemWidgetRoot extends StatelessWidget {
                       right: kDefPadding / 2,
                       top: kDefPadding / 2),
                   child: Hero(
-                    tag: (itemName + "1"),
+                      tag: (itemName + "1"),
                       child: Icon(
-                    itemIcon, //TODO: Item icon hinzufügen
-                    color: kBluGreyS1,
-                    size: 50,
-                  ))),
+                        itemIcon, //TODO: Item icon hinzufügen
+                        color: kBluGreyS1,
+                        size: 50,
+                      ))),
               Padding(
                 padding:
-                EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-                child:
-               AutoSizeText(
+                    EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
+                child: AutoSizeText(
                   shortItem(itemName),
                   style: TextStyle(color: kWhite),
                   maxLines: 1,
-                ),)
-
+                ),
+              )
             ],
           ),
         ));

@@ -59,7 +59,7 @@ class DetailBody extends StatelessWidget {
                         height: size.height * 0.03,
                         width: 20,
                       ),
-                      DetailNote(size: size, notes: notes)
+                      Container(height: 10000 , child: DetailNote(size: size, notes: notes),)
                     ],
                   ),
                 ),
