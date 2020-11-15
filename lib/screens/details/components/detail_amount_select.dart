@@ -67,7 +67,7 @@ class _DetailAmountState extends State<DetailAmount> {
             height: 40,
             width: size.width * 0.2,
             child: TextFormField(
-              //controller: textController,
+              maxLength: 6,
               style: TextStyle(color: kBlack, fontSize: size.height * 0.03),
               initialValue: doubleToText(amount),
               onFieldSubmitted: (String input) {
