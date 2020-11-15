@@ -1,6 +1,6 @@
 /*  detail_body.dart
 *   @author: Benjamin Dangl
-*   @version: 26.10.2020
+*   @version: 15.11.2020
  */
 
 import 'package:flutter/material.dart';
