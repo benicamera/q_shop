@@ -1,0 +1,30 @@
+{
+  "lists": [
+    {
+      "name": "EDEKA",
+      "products": [
+        {
+          "name": "Apfel",
+          "cat": "Obst",
+          "icon": "0xe901",
+          "amount": "10 Stk.",
+          "note": "Sie müssen reif sein!"
+        },
+        {
+          "name": "Banane",
+          "cat": "Obst",
+          "icon": "0xe902",
+          "amount": "500 gr",
+          "note": "Klein und grün. Möglichst BIO und aus Deutschland"
+        },
+        {
+          "name": "Backpapier",
+          "cat": "Sonstige",
+          "icon": "0xe903",
+          "amount": "1 Stk.",
+          "note": "Bereits zugeschnitten."
+        }
+      ]
+    }
+  ]
+}
