@@ -9,18 +9,25 @@ import 'package:q_shop/screens/createItem/createItem_screen.dart';
 import 'components/main_body.dart';
 
 class MainScreen extends StatefulWidget {
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  int selectedItem = 0;
+  final tabs = [
+    Main_Body(),
+    Center(child: Text("Shopping")),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
-      body: Main_Body(),
-      bottomNavigationBar: OwnBottomNavigationBar(selectedItem: 0,),
+      body: tabs[selectedItem],
     );
   }
 
@@ -71,27 +78,4 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
-class OwnBottomNavigationBar extends StatelessWidget {
-  int selectedItem;
-   OwnBottomNavigationBar({this.selectedItem});
-  @override
-  Widget build(BuildContext context) {
-    //TODO: onTap:
-    return BottomNavigationBar(
-      backgroundColor: kDarkGrey3,
-      selectedItemColor: kBluGreyS1,
-      unselectedItemColor: kGrey,
-      showSelectedLabels: false,
-      iconSize: 30,
-      currentIndex: selectedItem,
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.list), title: Text("")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart), title: Text('')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.sd_card), title: Text(''))
-      ],
-    );
-  }
-}
+

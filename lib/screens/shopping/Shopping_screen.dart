@@ -14,7 +14,6 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
       body: ShoppingScreen(),
-      bottomNavigationBar: OwnBottomNavigationBar(selectedItem: 0,),
     );
   }
 
@@ -63,7 +62,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   }
 }
 
-class OwnBottomNavigationBar extends StatelessWidget {
+/*class OwnBottomNavigationBar extends StatelessWidget {
   int selectedItem;
   OwnBottomNavigationBar({this.selectedItem});
   @override
@@ -87,3 +86,6 @@ class OwnBottomNavigationBar extends StatelessWidget {
     );
   }
 }
+
+
+ */
