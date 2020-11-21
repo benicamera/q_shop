@@ -57,7 +57,7 @@ class _ShoppingListView extends State<ShoppingListView> {
           iconCode: "0xe901",
           amount: "2 Stk.",
           note: ""));
-
+    list.removeRange(1, list.length);
     for (var e in help_list.products) {
       print("shooping_list_view name of product to add: " + e.name);
       if(!onList(e.name))

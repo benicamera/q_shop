@@ -13,18 +13,20 @@ import 'package:q_shop/constants.dart';
 class SearchResult extends StatelessWidget {
   const SearchResult({
     Key key,
-    @required this.item,
+    @required this.item, @required this.notifyParent, this.index
   }) : super(key: key);
 
   final Product item;
+  final Function() notifyParent;
+  final int index;
 
   void toDetailScreen(BuildContext context) {
-    ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, iconCode: item.iconCode, amount: "2,0 Stk.", note: "Platz für Notizen");
+    ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, iconCode: item.iconCode, amount: "2.0 Stk.", note: "Platz für Notizen",);
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => DetailsScreen(
-              product: listProduct,
+              product: listProduct, index: index, add: true,
             )));
   }
   

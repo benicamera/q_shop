@@ -14,15 +14,17 @@ class DetailAmount extends StatefulWidget {
   String unit;
   final int index;
   final String name;
+  final bool add;
+  final ListProduct product;
 
-  DetailAmount(String amount, this.index, this.name) {
+  DetailAmount(String amount, this.index, this.name, this.add, this.product) {
     this.amount = double.parse(amount.split(" ")[0]);
     this.unit = amount.split(" ")[1];
   }
 
   @override
   _DetailAmountState createState() =>
-      _DetailAmountState(amount: amount, unit: unit, name: this.name, index: this.index);
+      _DetailAmountState(amount: amount, unit: unit, name: this.name, index: this.index, add: this.add, product: this.product);
 }
 
 class _DetailAmountState extends State<DetailAmount> {
@@ -30,10 +32,12 @@ class _DetailAmountState extends State<DetailAmount> {
   double amount;
   String unit;
   final int index;
+  final bool add;
   final String name;
+  final ListProduct product;
   final textController = TextEditingController();
 
-  _DetailAmountState({this.index, this.name, this.amount, this.unit});
+  _DetailAmountState({this.index, this.name, this.amount, this.unit, this.add, this.product});
 
   void validateInput(String input) {
     String _input = input.toString();
@@ -101,7 +105,7 @@ class _DetailAmountState extends State<DetailAmount> {
               onFieldSubmitted: (String input) {
                 print(input);
                 validateInput(input);
-                save();
+                (!add)? save() : product.amount = amount.toString() + " " + unit;
               },
               decoration: InputDecoration(
                 //errorText: validateInput(textController.text),

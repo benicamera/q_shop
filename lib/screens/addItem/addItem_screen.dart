@@ -7,22 +7,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
 import 'package:q_shop/models/products.dart';
+import 'package:q_shop/screens/addItem/components/addItem_body.dart';
 import 'package:q_shop/screens/main/components/main_divider_bar.dart';
 
 import 'components/searchResult.dart';
 import 'components/searchbar.dart';
 
 class AddItemScreen extends StatefulWidget {
+  final int index;
 
-  const AddItemScreen({Key key,}) : super(key: key);
+  const AddItemScreen({Key key, this.index,}) : super(key: key);
   @override
-  _AddItemScreenState createState() => _AddItemScreenState();
+  _AddItemScreenState createState() => _AddItemScreenState(this.index);
 }
 
 class _AddItemScreenState extends State<AddItemScreen> {
+  final int index;
   var searchResults = new List();
 
-  _AddItemScreenState() {
+  _AddItemScreenState(this.index) {
     searchResults.add(Product(name: "Produkt erstellen", cat: "Sonstige"));
   }
 
@@ -46,35 +49,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
         backgroundColor: kDarkGrey4,
         appBar: buildAppBar(),
         bottomNavigationBar: buildBottomAppBar(),
-        body: Column(
-          children: [
-            Container(height: MediaQuery.of(context).size.height / 100),
-            Center(
-              child: SearchBar(
-                onChanged: (String value) {
-                  refreshResults(value);
-                  return;
-                },
-              ),
-            ),
-            Container(height: MediaQuery.of(context).size.height / 60),
-            DividerBar(
-              title: "Suchergebnisse",
-            ),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: searchResults.length,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int i) {
-                    return Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width / 20,
-                            vertical: MediaQuery.of(context).size.height / 50),
-                        child: SearchResult(item: searchResults[i]));
-                  }),
-            )
-          ],
-        ));
+        body: AddItemScreenBody(index: index,));
   }
 
   BottomAppBar buildBottomAppBar() {
@@ -117,55 +92,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
       ],
     );
   }
-  /*
-  //VON FELIX
-  List getSearchResults(String inString) {
-    List<String> resultList = new List<String>();
-    List<String> inStringList = inString.split('');
-    HashMap resultValueList = new HashMap<String,int>();
-    int w = 0;
-    for(int i = 0;i < allProducts.length;i++){
-      if(allProducts[i].name.length == inStringList.length){
-        w = realResults(inStringList, allProducts[i].name);
-      }
-      else{
-        w=surrealResults(inStringList, allProducts[i].name);
-      }
-      resultValueList[allProducts[i]] = w;
-    }
-    var sortedMap = Map.fromEntries(
-        resultValueList.entries.toList()
-          ..sort((e1, e2) => e1.value.compareTo(e2.value)));
-    print(sortedMap);
-    return sortedMap.keys.toList();
-  }
 
-  int realResults(List<String> inStringList,String productString){
-    List<String> productStringList = productString.split('');
-    int nbError = 0;
-    for(int i = 0;i < inStringList.length; i++){
-      if(!(inStringList[i] == productStringList[i])){
-        nbError++;
-      }
-    }
-
-    return nbError;
-  }
-
-  int surrealResults(List<String> inStringList,String productString){
-    List<String> productStringList = productString.split('');
-    int nbCorrect = 0;
-    for(int i = 0;i < inStringList.length; i++){
-      for(int j = 0; j < productStringList.length;j++){
-        if(inStringList[i] == productStringList[j]){
-          nbCorrect++;
-          productStringList.removeAt(j);
-          j = productStringList.length;
-        }
-      }
-    }
-    return inStringList.length-nbCorrect;
-  }*/
 }
 
 

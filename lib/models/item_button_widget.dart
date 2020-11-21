@@ -24,14 +24,25 @@ class ItemWidget extends StatelessWidget {
         context,
         MaterialPageRoute(
             builder: (context) => DetailsScreen(
-                  product: listProduct, index: index
+                  product: listProduct, index: index, add: false,
                 )));
   }
 
   void toNewItem(BuildContext context) {
     print("To new Item");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => AddItemScreen()));
+        context, MaterialPageRoute(builder: (context) => AddItemScreen(index: index,)));
+  }
+
+  String displayableAmount(String amount){
+    String _amount = amount.split(" ")[0];
+    String _unit = amount.split(" ")[1];
+
+    _amount = _amount.replaceAll(".", ",");
+
+    String out = _amount + " " + _unit;
+
+    return out;
   }
 
   @override
@@ -53,7 +64,7 @@ class ItemWidget extends StatelessWidget {
                 itemIcon: (listProduct.name == "NeW?1!83") ? Icons.add : apfel, //TODO: get icon
               ),
               Text(
-                (listProduct.name == "NeW?1!83") ? "" : listProduct.amount,
+                (listProduct.name == "NeW?1!83") ? "" : displayableAmount(listProduct.amount),
                 style: TextStyle(
                     color: kWhite,
                     fontWeight: FontWeight.bold,

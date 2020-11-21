@@ -13,9 +13,10 @@ import 'detail_note.dart';
 class DetailBody extends StatelessWidget {
   final ListProduct product;
   final int index;
+  final bool add;
 
   DetailBody(
-      {Key key, this.product, this.index})
+      {Key key, this.product, this.index, this.add})
       : super(key: key);
 
   @override
@@ -50,7 +51,7 @@ class DetailBody extends StatelessWidget {
                           Padding(
                               padding: EdgeInsetsDirectional.only(
                                   start: size.width * 0.1),
-                              child: DetailAmount(product.amount, index, product.name))
+                              child: DetailAmount(product.amount, index, product.name, add, product))
                         ],
                       ),
                       SizedBox(

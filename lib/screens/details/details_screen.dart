@@ -2,16 +2,20 @@
 *   @author: Benjamin Dangl
 *   @version: 30.10.2020
  */
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
+import 'package:q_shop/screens/main/main_screen.dart';
 import '../../constants.dart';
 
 class DetailsScreen extends StatelessWidget {
   final ListProduct product;
   final int index;
+  final bool add;
 
-  const DetailsScreen({Key key, this.product, this.index})
+  const DetailsScreen({Key key, this.product, this.index, this.add})
       : super(key: key);
 
 //TODO: SAVE EVERYTHING WHEN GOING BACK
@@ -20,23 +24,146 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
-      bottomNavigationBar: buildBottomAppBar(),
-      body: DetailBody(product: product, index: index), //TODO: Get cat
+      bottomNavigationBar: buildBottomAppBar(context),
+      body:
+          DetailBody(product: product, index: index, add: add), //TODO: Get cat
     );
   }
 
-  BottomAppBar buildBottomAppBar() {
+  BottomAppBar buildBottomAppBar(BuildContext context) {
     return BottomAppBar(
       color: kDarkGrey3,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          IconButton(icon: Icon(Icons.check, color: kGreen,), onPressed: (){},),//TODO: action hinzufügen
-          (false)?IconButton(icon: Icon(Icons.add, color: kGreen,), onPressed: (){},) : IconButton(icon: Icon(Icons.delete, color: kRed,), onPressed: (){},), //TODO: Bedingung ändern und action hinzufügen
+          IconButton(
+            icon: Icon(
+              Icons.check,
+              color: kGreen,
+            ),
+            onPressed: () {},
+          ),
+          //TODO: action hinzufügen
+          (add)
+              ? IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: kGreen,
+                  ),
+                  onPressed: () {
+                    addToList(context);
+                  },
+                )
+              : IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: kRed,
+                      ),
+                      onPressed: () {asKForRemoval(context);},
+                    ),
+          //TODO: Bedingung ändern und action hinzufügen
         ],
       ),
     );
+  }
+
+  void removeFromList() {
+    final box = Hive.box('shopLists');
+    ShopList list = box.getAt(index);
+    int prodI = getIndexFromProductName(list, product.name);
+    print("DetailScreen: $prodI");
+    list.products.removeAt(prodI);
+    box.putAt(index, list);
+  }
+
+  void asKForRemoval(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: Text("Wirklich löschen?", style: TextStyle(color: kRed),),
+          content: Text("Du bist im Begriff den Artikel von der Liste zu entfernen. Dies löscht deine Mengenangabe und die Notizen. \n"
+              "Der Artikel kann später wieder hinzugefügt werden, die Mengenangabe und die Notizen bleiben allerdings gelöscht."),
+          actions: [
+            FlatButton(
+              child: Text("Abbrechen"),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text("Löschen", style: TextStyle(color: kRed),),
+              onPressed: (){
+                print("DetailsScreen: Löschen");
+                removeFromList();
+                Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  int getIndexFromProductName(ShopList list, String name) {
+    print("DetailScreen: name to remove: $name");
+    List<ListProduct> prods = list.products;
+    for (int i = 0; i < list.products.length; i++) {
+      if (name == list.products[i].name) return i;
+    }
+    return 0;
+  }
+
+  void addToList(BuildContext context) {
+    print("DetailScreen: in addToList");
+    final box = Hive.box('shopLists');
+    ShopList list = box.getAt(index);
+    if (productInList(product, list)) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                "Bereits auf der Liste",
+                style: TextStyle(color: kRed),
+              ),
+              content: Text(
+                "Dieser Artikel ist bereits auf der Liste. Wähle eine andere Liste oder bearbeite den Artikel über die Artikelübersicht.",
+                style: TextStyle(color: kBlack),
+              ),
+              actions: [
+                new FlatButton(
+                  child: new Text(
+                    "Verstanden",
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    } else {
+      list.products.add(product);
+      box.putAt(index, list);
+      //Hive.box('allProducts').close();
+      Navigator.of(context).pop();
+      Navigator.of(context).pop();
+    }
+  }
+
+  bool productInList(ListProduct product, ShopList list) {
+    String name = product.name;
+    List<ListProduct> prodList = list.products;
+    for (ListProduct p in prodList) {
+      if (p.name == name) return true;
+    }
+    return false;
   }
 
   AppBar buildAppBar() {
@@ -66,9 +193,8 @@ class DetailsScreen extends StatelessWidget {
             print("Einstellungen");
           } /*TODO: Settingsscreen aufrufen*/,
         ),
-        SizedBox(
-          width: 10 //kDefPadding / 2,
-        )
+        SizedBox(width: 10 //kDefPadding / 2,
+            )
       ],
     );
   }

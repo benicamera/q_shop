@@ -61,9 +61,10 @@ class _ListOverviewState extends State<ListOverview> {
               ),
               Expanded(
                 child: Align(
-                  child: WatchBoxBuilder(
-                      box: Hive.box('shopLists'),
-                      builder: (context, listBox) {
+                  // ignore: deprecated_member_use
+                  child: ValueListenableBuilder(
+                    valueListenable: Hive.box('shopLists').listenable(),
+                      builder: (context, Box listBox, _) {
                         return ShoppingListView(
                           list: listBox.getAt(listIndex),
                           index: listIndex,

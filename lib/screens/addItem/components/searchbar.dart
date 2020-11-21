@@ -40,7 +40,7 @@ class _SearchBarState extends State<SearchBar> {
           child: TextFormField(
             style: TextStyle(color: kLightGrey1),
             controller: _controller,
-            onChanged: widget.onChanged,
+            onFieldSubmitted: widget.onChanged,
             autocorrect: true,
             cursorColor: kLightGrey3,
             decoration: InputDecoration(

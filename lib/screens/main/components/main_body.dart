@@ -18,6 +18,7 @@ class Main_Body extends StatefulWidget {
 class _Main_BodyState extends State<Main_Body> {
   // ignore: non_constant_identifier_names
   ShopList shop_list;
+  int unused = 0;
 
   _Main_BodyState({this.shop_list});
 
