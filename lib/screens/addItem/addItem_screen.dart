@@ -6,8 +6,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/main/components/main_divider_bar.dart';
 import 'package:q_shop/models/products.dart';
+import 'package:q_shop/screens/main/components/main_divider_bar.dart';
 
 import 'components/searchResult.dart';
 import 'components/searchbar.dart';
