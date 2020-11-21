@@ -29,7 +29,7 @@ class MyAppState extends State<MyApp> {
   final _pageOptions = [
     MainScreen(),
     Text("Shopping"),
-    Text("Save")
+    Text("Save"),
   ];
   @override
   Widget build(BuildContext context) {
