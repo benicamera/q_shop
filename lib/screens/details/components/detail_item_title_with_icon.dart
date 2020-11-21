@@ -5,22 +5,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/products.dart';
 
 class DetailItemTitleWithIcon extends StatelessWidget {
-  final int itemId = 1; //TODO: get item id
+  final ListProduct product;
+  final size;
   const DetailItemTitleWithIcon({
     Key key,
-    @required this.itemName,
-    @required this.itemCat,
-    @required this.size,
-    @required this.itemIcon,
+    @required this.product, this.size
   }) : super(key: key);
-
-  final String itemName;
-  final String itemCat;
-  final Size size;
-  final IconData itemIcon;
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +25,14 @@ class DetailItemTitleWithIcon extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Hero(
-            tag: (itemName + "2"),
+            tag: (product.name + "2"),
             child: Text(
-            itemName,
+            product.name,
             style: Theme.of(context).textTheme.headline4.copyWith(
                 color: kLightGrey2, fontWeight: FontWeight.bold),
           ),),
           Text(
-            itemCat,
+            product.cat,
             style: TextStyle(color: kDarkGrey1),
           ),
           Row(
@@ -47,8 +40,8 @@ class DetailItemTitleWithIcon extends StatelessWidget {
               Padding(
                 padding: EdgeInsetsDirectional.only(
                     start: size.width / 2.8),
-                child: Hero(tag: (itemName + "1"), child: Icon(
-                  itemIcon,
+                child: Hero(tag: (product.name + "1"), child: Icon(
+                  product.getIcon(),
                   color: kBluGreyS1,
                   size: size.width*size.height / 1360,
                 ),)

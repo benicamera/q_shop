@@ -1,0 +1,58 @@
+[
+  {"name":"Apfel","icon":"0xe918","category":"Obst"},
+  {"name":"Birne","icon":"0xe917","category":"Obst"},
+  {"name":"Banane","icon":"0xe919","category":"Obst"},
+  {"name":"Kirsche","icon":"0xe908","category":"Obst"},
+  {"name":"Trauben","icon":"0xe904","category":"Obst"},
+  {"name":"Zitrone","icon":"0xe900","category":"Obst"},
+
+
+  {"name":"Tomate","icon":"0xe902","category":"Gemüse"},
+  {"name":"Karotte","icon":"0xe90d","category":"Gemüse"},
+  {"name":"Kartoffel","icon":"?","category":"Gemüse"},
+  {"name":"Salat","icon":"?","category":"Gemüse"},
+
+
+  {"name":"Lyoner","icon":"0xe901","category":"Fleisch"},
+  {"name":"Salami","icon":"0xe901","category":"Fleisch"},
+  {"name":"Schinken","icon":"0xe90e","category":"Fleisch"},
+  {"name":"Leberwurst","icon":"0xe901","category":"Fleisch"},
+  {"name":"Hühnerbrust","icon":"?","category":"Fleisch"},
+  {"name":"Hänchenkeule","icon":"0xe90e","category":"Fleisch"},
+  {"name":"Putenfilet","icon":"?","category":"Fleisch"},
+  {"name":"Schweinskotelett","icon":"?","category":"Fleisch"},
+
+
+  {"name":"Lachs","icon":"0xe911","category":"Fisch"},
+  {"name":"Forelle","icon":"0xe911","category":"Fisch"},
+
+
+  {"name":"Milch","icon":"0xe900","category":"Milch"},
+  {"name":"Joghurt","icon":"?","category":"Milch"},
+  {"name":"Sahne","icon":"?","category":"Milch"},
+
+
+  {"name":"Emmentaler","icon":"0xe90b","category":"Käse"},
+  {"name":"Gouda","icon":"0xe90b","category":"Käse"},
+  {"name":"Bergkäse","icon":"0xe90b","category":"Käse"},
+
+
+  {"name":"Eier","icon":"0xe916","category":"Ei"},
+  {"name":"Ostereier","icon":"?","category":"Ei"},
+
+
+  {"name":"Roggenbrot","icon":"0xe914","category":"Backwaren"},
+  {"name":"Brötchen","icon":"0xe904","category":"Backwaren"},
+  {"name":"Kartoffelbrot","icon":"0xe904","category":"Backwaren"},
+  {"name":"Vollkornbrot","icon":"0xe904","category":"Backwaren"},
+  {"name":"Vollkorntoast","icon":"0xe903","category":"Backwaren"},
+  {"name":"Toast","icon":"0xe903","category":"Backwaren"},
+  {"name":"Laugenstange","icon":"0xe901","category":"Backwaren"},
+  {"name":"Brezel","icon":"0xe901","category":"Backwaren"},
+  {"name":"Baguette","icon":"0xe904","category":"Backwaren"},
+  {"name":"Croissant","icon":"?","category":"Backwaren"},
+
+
+  {"name":"Spaghetti","icon":"0xe905","category":"Nudeln"},
+  {"name":"Fussili","icon":"0xe906","category":"Nudeln"}
+]

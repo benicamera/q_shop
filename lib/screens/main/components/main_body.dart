@@ -3,11 +3,12 @@
 *   @version: 14.11.2020
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:q_shop/models/main_createlist_button_big.dart';
-import 'package:q_shop/models/main_shopping_list_view.dart';
-import 'package:q_shop/models/main_divider_bar.dart';
+import 'package:hive/hive.dart';
+import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/products.dart';
+
+import 'ListOverview.dart';
 
 class Main_Body extends StatefulWidget {
   @override
@@ -15,21 +16,53 @@ class Main_Body extends StatefulWidget {
 }
 
 class _Main_BodyState extends State<Main_Body> {
-  //TODO: Liste kommt von JSON.
-  var shop_list = new List();
-  _Main_BodyState(){
-    shop_list.add(["Zitrone", "4 Stk."],);
-    shop_list.add(["Bier", "1 l"],);
-    shop_list.add(["Brot", "0,5 kg"],);
-    shop_list.add(["Fleisch", "500 g"]);
-  }
+  // ignore: non_constant_identifier_names
+  ShopList shop_list;
+
+  _Main_BodyState({this.shop_list});
 
   //TODO: Kommt von JSON-Liste. Davor das Script ausführen
   var recommendations = new List();
-
   @override
   Widget build(BuildContext context) {
-    if (shop_list.isEmpty) {
+    try {
+      Hive.registerAdapter(ShopListAdapter());
+    }catch(err){
+      print("HIIIIEEEERRR: " + err.toString());
+    }
+    try {
+      Hive.registerAdapter(ProductAdapter());
+    }catch(err){
+      print("HIIIIEEEERRR: " + err.toString());
+    }
+    try {
+      Hive.registerAdapter(ListProductAdapter());
+    }catch(err){
+      print("HIIIIEEEERRR: " + err.toString());
+    }
+    return FutureBuilder(
+      future: Hive.openBox('shopLists'),
+      // ignore: missing_return
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError)
+            return Text(
+              snapshot.error.toString(), style: TextStyle(color: kRed),);
+          else
+            return ListOverview();
+        }
+        return SizedBox(
+          child: CircularProgressIndicator(),
+          width: 60,
+          height: 60,
+        );
+      },
+    );
+  }
+
+    //TODO: Das stück code in ListOverview einbauen
+    /*
+    if (shop_list == null) {
       return Column(
         children: <Widget>[
           Center(
@@ -40,20 +73,5 @@ class _Main_BodyState extends State<Main_Body> {
         ],
       );
     }
-    return ListView(
-      padding: EdgeInsets.only(top: 5, right: 23, bottom: 5),
-      children: <Widget> [ DividerBar(title: "Liste 1",), Expanded(
-        child: Align(
-          child: ShoppingListView(list: shop_list, isProposals: false,),
-          alignment: Alignment.centerLeft,
-        ), //TODO: Liste einfügen
-      ),Padding(
-          padding: EdgeInsets.only(top: 32),
-          child: DividerBar(title: "Vorschläge",)
-      ),Align(
-        alignment: Alignment.centerLeft,
-        child: ShoppingListView(list: new List(), isProposals: true,), //TODO: Vorschläge einfügen
-      )], //TODO: Title der Liste] Padding(
-        );
-  }
+    */
 }

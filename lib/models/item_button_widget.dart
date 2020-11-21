@@ -6,29 +6,25 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/icons.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/addItem/addItem_screen.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
 
 import '../constants.dart';
 
 class ItemWidget extends StatelessWidget {
-  final String itemName;
-  final String itemWeight;
-  final bool isProposals;
-  final bool isNewItem;
+  final listProduct;
+  int index;
 
   ItemWidget(
-      {this.itemName, this.itemWeight, this.isProposals, this.isNewItem});
+      {this.listProduct, this.index});
 
   void toDetailScreen(BuildContext context) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => DetailsScreen(
-                  itemName: itemName,
-                  weight: itemWeight,
-                  itemIcon: apfel,
-                  isProposal: this.isProposals,
+                  product: listProduct, index: index
                 )));
   }
 
@@ -46,18 +42,18 @@ class ItemWidget extends StatelessWidget {
         }, //TODO: Beweglich Löschen oder abhaken
         onTap: () {
           print("tapped");
-          isNewItem ? toNewItem(context) : toDetailScreen(context);
-        }, //TODO: Details aufrufen
+          listProduct.name == "NeW?1!83" ? toNewItem(context) : toDetailScreen(context); //TODO:CODE
+        },
         child: Container(
           child: new Stack(
             alignment: Alignment.bottomRight,
             children: <Widget>[
               ItemWidgetRoot(
-                itemName: (isNewItem) ? "Produkt hinzufügen" : itemName,
-                itemIcon: (isNewItem) ? plus : apfel, //TODO: get icon
+                itemName: (listProduct.name == "NeW?1!83") ? "Produkt hinzufügen" : listProduct.name,
+                itemIcon: (listProduct.name == "NeW?1!83") ? Icons.add : apfel, //TODO: get icon
               ),
               Text(
-                (isNewItem) ? "" : itemWeight, //TODO: Menge hinzufügen
+                (listProduct.name == "NeW?1!83") ? "" : listProduct.amount,
                 style: TextStyle(
                     color: kWhite,
                     fontWeight: FontWeight.bold,

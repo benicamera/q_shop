@@ -5,17 +5,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/components/createItem_title_with_icon.dart';
 import 'package:q_shop/screens/details/components/detail_amount_select.dart';
 import 'package:q_shop/screens/details/components/detail_note.dart';
 
 
 class CreateItemBody extends StatelessWidget {
-
-  String notes = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+  ListProduct listProduct;
+  Product product;
 
   CreateItemBody(
-      {Key key, })
+      {Key key, this.listProduct, this.product})
       : super(key: key);
 
   @override
@@ -50,7 +51,7 @@ class CreateItemBody extends StatelessWidget {
                           Padding(
                               padding: EdgeInsetsDirectional.only(
                                   start: size.width * 0.1),
-                              child: DetailAmount("2 kg"))
+                              child: Text("createItemBody.dart, Line: 54")) //DetailAmount("2 Stk", 0))
                         ],
                       ),
                       SizedBox(
@@ -58,7 +59,7 @@ class CreateItemBody extends StatelessWidget {
                         width: 20,
                       ),
                       SingleChildScrollView(
-                        child: DetailNote(size: size, notes: notes))
+                        child: DetailNote(size: size, product: listProduct,))
                     ],
                   ),
                 ),

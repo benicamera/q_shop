@@ -4,6 +4,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/details/components/detail_editable_text.dart';
 import '../../../constants.dart';
 
@@ -11,13 +12,14 @@ class DetailNote extends StatelessWidget {
 
   DetailNote({
     Key key,
-    @required this.size,
-    @required this.notes,
+    @required this.product,
+    this.size, this.index
 
   }) : super(key: key);
 
-  final Size size;
-  final String notes;
+  final ListProduct product;
+  final size;
+  final int index;
 
 
   @override
@@ -43,7 +45,7 @@ class DetailNote extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: EdgeInsetsDirectional.only(start: size.width*0.05),
-            child: DetailEditableText(),),
+            child: DetailEditableText(product: product, index: index,),),
           )
     ],
     );

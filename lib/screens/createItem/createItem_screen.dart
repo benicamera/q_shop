@@ -3,12 +3,22 @@
 *   @version: 14.11.2020
  */
 import 'package:flutter/material.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/components/createItemBody.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
 import '../../constants.dart';
 
 class CreateItemScreen extends StatelessWidget {
-  const CreateItemScreen({
+  Product product =
+      Product(name: "Unbenannt", cat: "Sonstige", iconCode: "0xe901");
+  ListProduct lProduct = ListProduct(
+      name: "Unbenannt",
+      cat: "Sonstige",
+      iconCode: "0xe901",
+      amount: "2,0 Stk.",
+      note: "Platz für Notizen");
+
+  CreateItemScreen({
     Key key,
   }) : super(key: key);
 
@@ -19,7 +29,10 @@ class CreateItemScreen extends StatelessWidget {
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomAppBar(),
-      body: CreateItemBody(), //TODO: Get cat
+      body: CreateItemBody(
+        listProduct: lProduct,
+        product: product,
+      ), //TODO: Get cat
     );
   }
 

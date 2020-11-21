@@ -3,6 +3,7 @@
 *   @version: 14.11.2020
  */
 import 'package:flutter/material.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/createItem_screen.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
 
@@ -15,17 +16,15 @@ class SearchResult extends StatelessWidget {
     @required this.item,
   }) : super(key: key);
 
-  final item;
+  final Product item;
 
   void toDetailScreen(BuildContext context) {
+    ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, iconCode: item.iconCode, amount: "2,0 Stk.", note: "Platz für Notizen");
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => DetailsScreen(
-              itemName: item,
-              weight: "1 Stk",
-              itemIcon: apfel,
-              isProposal: true,
+              product: listProduct,
             )));
   }
   
@@ -39,7 +38,7 @@ class SearchResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          (item == "Produkt erstellen")
+          (item.name == "Produkt erstellen")
               ? toCreateItem(context)
               : toDetailScreen(context);
         },
@@ -57,7 +56,7 @@ class SearchResult extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width / 10),
                   child: Text(
-                    item,
+                    item.name,
                     style: TextStyle(
                         fontSize: 22,
                         color:

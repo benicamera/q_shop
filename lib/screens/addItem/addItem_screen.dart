@@ -6,21 +6,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
-import 'package:q_shop/models/main_divider_bar.dart';
-import 'package:q_shop/screens/details/details_screen.dart';
+import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/main/components/main_divider_bar.dart';
+import 'package:q_shop/models/products.dart';
 
-import '../../icons.dart';
 import 'components/searchResult.dart';
 import 'components/searchbar.dart';
 
-class AddItemScreen extends StatelessWidget {
+class AddItemScreen extends StatefulWidget {
+
+  const AddItemScreen({Key key,}) : super(key: key);
+  @override
+  _AddItemScreenState createState() => _AddItemScreenState();
+}
+
+class _AddItemScreenState extends State<AddItemScreen> {
   var searchResults = new List();
 
-  AddItemScreen() {
-    searchResults.add("Produkt erstellen");
+  _AddItemScreenState() {
+    searchResults.add(Product(name: "Produkt erstellen", cat: "Sonstige"));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void refreshResults(String value) {
+
     print(value + " ... refreshing...");
   }
 
@@ -101,6 +117,55 @@ class AddItemScreen extends StatelessWidget {
       ],
     );
   }
+  /*
+  //VON FELIX
+  List getSearchResults(String inString) {
+    List<String> resultList = new List<String>();
+    List<String> inStringList = inString.split('');
+    HashMap resultValueList = new HashMap<String,int>();
+    int w = 0;
+    for(int i = 0;i < allProducts.length;i++){
+      if(allProducts[i].name.length == inStringList.length){
+        w = realResults(inStringList, allProducts[i].name);
+      }
+      else{
+        w=surrealResults(inStringList, allProducts[i].name);
+      }
+      resultValueList[allProducts[i]] = w;
+    }
+    var sortedMap = Map.fromEntries(
+        resultValueList.entries.toList()
+          ..sort((e1, e2) => e1.value.compareTo(e2.value)));
+    print(sortedMap);
+    return sortedMap.keys.toList();
+  }
+
+  int realResults(List<String> inStringList,String productString){
+    List<String> productStringList = productString.split('');
+    int nbError = 0;
+    for(int i = 0;i < inStringList.length; i++){
+      if(!(inStringList[i] == productStringList[i])){
+        nbError++;
+      }
+    }
+
+    return nbError;
+  }
+
+  int surrealResults(List<String> inStringList,String productString){
+    List<String> productStringList = productString.split('');
+    int nbCorrect = 0;
+    for(int i = 0;i < inStringList.length; i++){
+      for(int j = 0; j < productStringList.length;j++){
+        if(inStringList[i] == productStringList[j]){
+          nbCorrect++;
+          productStringList.removeAt(j);
+          j = productStringList.length;
+        }
+      }
+    }
+    return inStringList.length-nbCorrect;
+  }*/
 }
 
 
