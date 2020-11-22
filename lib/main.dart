@@ -8,7 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:q_shop/constants.dart';
 import 'screens/main/main_screen.dart';
-
+import 'screens/shopping/Shopping_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyAppState extends State<MyApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     MainScreen(),
-    Text("Shopping"),
+    ShoppingScreen(),
     Text("Save"),
   ];
   @override
