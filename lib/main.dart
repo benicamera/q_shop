@@ -9,6 +9,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:q_shop/constants.dart';
 import 'screens/main/main_screen.dart';
 import 'screens/shopping/Shopping_screen.dart';
+import 'screens/List/List.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,7 @@ class MyAppState extends State<MyApp> {
   final _pageOptions = [
     MainScreen(),
     ShoppingScreen(),
-    Text("Save"),
+    ListScreen(),
   ];
   @override
   Widget build(BuildContext context) {

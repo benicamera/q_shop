@@ -8,6 +8,7 @@ class ShoppingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
+
     home: MyHomePage(),
     );
   }
@@ -16,6 +17,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kDarkGrey4,
         body: Center(child: SwipeList()));
   }
 }
@@ -55,6 +57,7 @@ class ListItemWidget extends State<SwipeList> {
               },
               direction: DismissDirection.endToStart,
               child: Card(
+                color: kBluGreyS2,
                 elevation: 5,
                 child: Container(
                   height: 225.0,
@@ -93,71 +96,6 @@ class ListItemWidget extends State<SwipeList> {
                         ),
                       ),
 
-                     /*Container(
-                       height: 225.0,
-                       width: 253,
-                       child: Padding(
-                       padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                       child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: <Widget>[
-                           Container(
-                             height: 43,
-                           ),
-                           Container(
-                             height: 25,
-                             color: Colors.amber,
-                             child: Padding(
-                               padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                               child: Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: <Widget>[
-                                     Text(items[index],
-                                     ),
-                                 ],
-                               ),
-                             ),
-                           ),
-                           Container(
-                             height: 40,
-                           ),
-                           Container(
-                             height: 68,
-                             width: 250,
-                             child: Padding(
-                               padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                               child: Row(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: <Widget>[
-                                   Container(
-                                     height: 65.0,
-                                     width: 30.0,
-                                   ),
-                                   Container(
-                                     height: 75.0,
-                                     width: 75.0,
-                                     color: Colors.brown,
-                                   ),
-                                   Container(
-                                     height: 65.0,
-                                     width: 30.0,
-                                   ),
-                                   Container(
-                                     height: 75.0,
-                                     width: 75.0,
-                                     color: Colors.cyanAccent,
-                                   ),
-                                 ],
-                               ),
-                             ),
-                           ),
-
-                         ],
-                       ),
-                     ),
-                     ),
-
-                      */
 
                     ],
                 ),
