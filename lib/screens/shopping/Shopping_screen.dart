@@ -18,7 +18,43 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey4,
-        body: Center(child: SwipeList()));
+        appBar: buildAppBar(),
+        body: Center(child: SwipeList())
+    );
+  }
+  AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: kDarkGrey3,
+      //TODO: Änderung vorgenommen
+      elevation: 2.0,
+      title: Text(
+        "  " + kTitle,
+        style: TextStyle(
+          color: kWhite,
+          fontWeight: FontWeight.bold,
+          fontSize: 35,
+          fontStyle: null,
+          fontFamily: null,
+        ),
+      ),
+      shadowColor: kBGColor,
+      actions: <Widget>[
+
+        IconButton(
+          icon: Icon(
+            Icons.settings,
+            color: kGrey,
+          ),
+          tooltip: null,
+          onPressed: () {
+            print("Einstellungen");
+          } /*TODO: Settingsscreen aufrufen*/,
+        ),
+        SizedBox(
+          width: kDefPadding / 2,
+        )
+      ],
+    );
   }
 }
 
@@ -60,23 +96,74 @@ class ListItemWidget extends State<SwipeList> {
                 color: kBluGreyS2,
                 elevation: 5,
                 child: Container(
-                  height: 225.0,
+                  height: 200.0,
                   width: 400,
                   child: Row(
                     children: <Widget>[
                       Container(
-                        height: 225.0,
-                        width: 225.0,
+                        height: 200.0,
+                        width: 200.0,
                         color: Colors.blue,
                       ),
                       Container(
-                        height: 225.0,
+                        height: 200.0,
                         width: 150.0,
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              Container(
+                                height: 25,
+                                color: Colors.amber,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(items[index],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 25,
+                              ),
+                              Container(
+                                height: 25,
+                                color: Colors.amber,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(items[index],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 25,
+                              ),
+                              Container(
+                                height: 25,
+                                color: Colors.amber,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(items[index],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 25,
+                              ),
                               Container(
                                 height: 25,
                                 color: Colors.amber,
