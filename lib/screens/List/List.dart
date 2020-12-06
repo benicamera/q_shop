@@ -62,7 +62,7 @@ class Page extends StatelessWidget {
     return Container(
       height: 20,
       width: 20,
-      color: Colors.amber,
+      color: Colors.yellow,
     );
   }
 }
