@@ -72,7 +72,7 @@ class Product {
   @HiveField(1)
   String cat;
   @HiveField(2)
-  String iconCode;
+  int iconCode;
 
   Product({this.name, this.cat, this.iconCode});
 
@@ -110,7 +110,7 @@ class ListProduct {
   @HiveField(1)
   String cat;
   @HiveField(2)
-  String iconCode;
+  int iconCode;
   @HiveField(3)
   String amount;
   @HiveField(4)
