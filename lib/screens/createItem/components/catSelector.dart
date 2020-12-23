@@ -4,23 +4,27 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:q_shop/models/products.dart';
 import '../../../constants.dart';
 
 class CatSelector extends StatefulWidget {
+  final Product product;
+  final ListProduct listProduct;
   String defCat = "Sonstige";
-  CatSelector() {}
+  CatSelector({this.product, this.listProduct});
 
   @override
   _CatSelector createState() =>
-      _CatSelector(category: defCat);
+      _CatSelector(category: defCat, product: this.product, listProduct: this.listProduct);
 }
 
 class _CatSelector extends State<CatSelector> {
-  //TODO: Informationen in JSON speichern
+  final Product product;
+  final ListProduct listProduct;
   String category;
   final textController = TextEditingController();
 
-  _CatSelector({this.category});
+  _CatSelector({this.product, this.listProduct, this.category});
 
   @override
   void dispose() {
@@ -44,6 +48,11 @@ class _CatSelector extends State<CatSelector> {
           onChanged: (String newValue) {
             setState(() {
               category = newValue;
+              print(newValue);
+              product.setCat(newValue);
+              print(newValue + " 1");
+              listProduct.setCat(newValue);
+              print(newValue + " 2");
             });
           },
           items: <String>['Obst', 'Gemüse', 'Sonstige'] //TODO: Alle Kategorien hinzufügen

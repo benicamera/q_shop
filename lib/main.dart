@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/appicons_icons.dart';
+import 'package:q_shop/screens/listOverview/listOverview_screen.dart';
 import 'screens/main/main_screen.dart';
 import 'screens/shopping/Shopping_screen.dart';
-import 'screens/List/List.dart';
+import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/listOverview/components/listOverview_body.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,12 +27,13 @@ class MyApp extends StatefulWidget {
     return MyAppState();
   }
 }
+
 class MyAppState extends State<MyApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     MainScreen(),
     ShoppingScreen(),
-    ListScreen(),
+    ListOverviewScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -56,15 +59,15 @@ class MyAppState extends State<MyApp> {
           iconSize: 30,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.list),
+              icon: Icon(Appicons.Menue),
               title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(Appicons.Einkaufswagen),
               title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.sd_card),
+              icon: Icon(Appicons.Karten),
               title: Text(''),
             ),
           ],

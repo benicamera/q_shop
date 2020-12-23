@@ -4,6 +4,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import '../../../models/item_button_widget.dart';
 
@@ -54,7 +55,7 @@ class _ShoppingListView extends State<ShoppingListView> {
       list.add(ListProduct(
           name: "NeW?1!83",
           cat: "Sonstige",
-          iconCode: "0xe901",
+          icon: Appicons.Plus1,
           amount: "2 Stk.",
           note: ""));
     list.removeRange(1, list.length);

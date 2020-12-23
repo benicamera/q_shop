@@ -74,7 +74,7 @@ class _DetailEditableTextState extends State<DetailEditableText> {
           onSubmitted: (newValue) {
             setState(() {
               product.note = newValue;
-              product.toJson();
+              //TODO: Save new value
               initialText = newValue;
               _isEditingText = false;
             });

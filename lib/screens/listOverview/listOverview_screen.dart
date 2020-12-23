@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:q_shop/constants.dart';
-import 'package:q_shop/icons.dart';
 import 'package:q_shop/models/appicons_icons.dart';
+import '../../constants.dart';
+import 'components/listOverview_body.dart';
 
-
-class ListScreen extends StatelessWidget {
+class ListOverviewScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-    home: MyHomePage(),
-
-    );
-  }
+  _ListOverviewScreenState createState() => _ListOverviewScreenState();
 }
-class MyHomePage extends StatelessWidget {
+
+class _ListOverviewScreenState extends State<ListOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kDarkGrey4,
-        appBar: buildAppBar(),
-        body: Page()
+      backgroundColor: kDarkGrey4,
+      appBar: buildAppBar(),
+      body: ListOverview_Body(),
     );
   }
+
   AppBar buildAppBar() {
     return AppBar(
       backgroundColor: kDarkGrey3,
@@ -54,16 +49,6 @@ class MyHomePage extends StatelessWidget {
           width: kDefPadding / 2,
         )
       ],
-    );
-  }
-}
-class Page extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 20,
-      color: Colors.yellow,
     );
   }
 }

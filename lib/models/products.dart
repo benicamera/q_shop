@@ -72,15 +72,15 @@ class Product {
   @HiveField(1)
   String cat;
   @HiveField(2)
-  int iconCode;
+  IconData icon;
 
-  Product({this.name, this.cat, this.iconCode});
+  Product({this.name, this.cat, this.icon});
 
   Map<String, dynamic> toMap() {
     return {
       'name':     name,
       'category': cat,
-      'iconCode': iconCode
+      'icon': icon
     };
   }
 
@@ -88,7 +88,7 @@ class Product {
 
   String getCat()    => cat;
 
-  IconData getIcon() => IconData(iconCode as int, fontFamily: 'ItemsIcons');
+  IconData getIcon() => icon;
 
   void setName(String name){
     this.name = name;
@@ -98,8 +98,8 @@ class Product {
     this.cat = cat;
   }
 
-  void setIcon(String icon){
-    this.iconCode = icon;
+  void setIcon(IconData icon){
+    this.icon = icon;
   }
 }
 
@@ -110,37 +110,29 @@ class ListProduct {
   @HiveField(1)
   String cat;
   @HiveField(2)
-  int iconCode;
+  IconData icon;
   @HiveField(3)
   String amount;
   @HiveField(4)
   String note;
 
-  ListProduct({this.name, this.cat, this.iconCode, this.amount, this.note});
+  ListProduct({this.name, this.cat, this.icon, this.amount, this.note});
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'category': cat,
-      'iconCode': iconCode,
+      'icon': icon,
       'amount': amount,
       'note': note
     };
   }
 
-  Map toJson() => {
-    'name': name,
-    'category': cat,
-    'iconCode': iconCode,
-    'amount': amount,
-    'note': note
-  };
-
   String getName()   => name;
 
   String getCat()    => cat;
 
-  IconData getIcon() => IconData(int.parse(iconCode), fontFamily: 'ItemsIcons'); //TODO: richtiges icon zurück geben.
+  IconData getIcon() => icon;
 
   String getAmount() => amount;
 
@@ -154,8 +146,8 @@ class ListProduct {
     this.cat = cat;
   }
 
-  void setIcon(String icon){
-    this.iconCode = icon;
+  void setIcon(IconData icon){
+    this.icon = icon;
   }
 
   void setAmount(String amount){

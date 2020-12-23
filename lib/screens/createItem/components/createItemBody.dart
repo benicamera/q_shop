@@ -14,9 +14,10 @@ import 'package:q_shop/screens/details/components/detail_note.dart';
 class CreateItemBody extends StatelessWidget {
   ListProduct listProduct;
   Product product;
+  final int index;
 
   CreateItemBody(
-      {Key key, this.listProduct, this.product})
+      {Key key, this.listProduct, this.product, this.index})
       : super(key: key);
 
   @override
@@ -51,7 +52,7 @@ class CreateItemBody extends StatelessWidget {
                           Padding(
                               padding: EdgeInsetsDirectional.only(
                                   start: size.width * 0.1),
-                              child: Text("createItemBody.dart, Line: 54")) //DetailAmount("2 Stk", 0))
+                              child: DetailAmount("2.0 Stk.", index, product.name, true, listProduct))
                         ],
                       ),
                       SizedBox(
@@ -59,11 +60,11 @@ class CreateItemBody extends StatelessWidget {
                         width: 20,
                       ),
                       SingleChildScrollView(
-                        child: DetailNote(size: size, product: listProduct,))
+                        child: DetailNote(size: size, product: listProduct, ))
                     ],
                   ),
                 ),
-                CreateItem_Title_Icon(),
+                CreateItem_Title_Icon(product: product, listProduct: listProduct,),
               ],
             ),
           )

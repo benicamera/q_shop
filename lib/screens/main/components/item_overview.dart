@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/main/components/main_shopping_list_view.dart';
 import 'package:q_shop/screens/main/components/main_divider_bar.dart';
@@ -8,12 +9,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
 
-class ListOverview extends StatefulWidget {
+class ItemOverview extends StatefulWidget {
   @override
-  _ListOverviewState createState() => _ListOverviewState();
+  _ItemOverviewState createState() => _ItemOverviewState();
 }
 
-class _ListOverviewState extends State<ListOverview> {
+class _ItemOverviewState extends State<ItemOverview> {
   final listBox = Hive.box('shopLists');
   int listIndex;
 
@@ -37,7 +38,7 @@ class _ListOverviewState extends State<ListOverview> {
         ListProduct(
             name: "Tomate",
             cat: "Gemüse",
-            iconCode: "0xe901",
+            icon: Appicons.Tomate1,
             amount: "2 Stk.",
             note: "Schwarze Tomaten")
       ]));

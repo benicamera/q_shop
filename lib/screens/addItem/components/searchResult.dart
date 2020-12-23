@@ -21,7 +21,7 @@ class SearchResult extends StatelessWidget {
   final int index;
 
   void toDetailScreen(BuildContext context) {
-    ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, iconCode: item.iconCode, amount: "2.0 Stk.", note: "Platz für Notizen",);
+    ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, icon: item.icon, amount: "2.0 Stk.", note: "Platz für Notizen",);
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -32,7 +32,7 @@ class SearchResult extends StatelessWidget {
   
   void toCreateItem(BuildContext context){
     Navigator.push(context, MaterialPageRoute(
-      builder: (context) => CreateItemScreen()
+      builder: (context) => CreateItemScreen(index: index,)
     ));
   }
 

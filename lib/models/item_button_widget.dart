@@ -6,6 +6,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:q_shop/icons.dart';
+import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/addItem/addItem_screen.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
@@ -14,7 +15,7 @@ import '../constants.dart';
 
 class ItemWidget extends StatelessWidget {
   final listProduct;
-  int index;
+  final int index;
 
   ItemWidget(
       {this.listProduct, this.index});
@@ -37,11 +38,8 @@ class ItemWidget extends StatelessWidget {
   String displayableAmount(String amount){
     String _amount = amount.split(" ")[0];
     String _unit = amount.split(" ")[1];
-
     _amount = _amount.replaceAll(".", ",");
-
     String out = _amount + " " + _unit;
-
     return out;
   }
 
@@ -61,7 +59,7 @@ class ItemWidget extends StatelessWidget {
             children: <Widget>[
               ItemWidgetRoot(
                 itemName: (listProduct.name == "NeW?1!83") ? "Produkt hinzufügen" : listProduct.name,
-                itemIcon: (listProduct.name == "NeW?1!83") ? Icons.add : apfel, //TODO: get icon
+                itemIcon: (listProduct.name == "NeW?1!83") ? Appicons.Plus1 : listProduct.icon, //TODO: get icon
               ),
               Text(
                 (listProduct.name == "NeW?1!83") ? "" : displayableAmount(listProduct.amount),

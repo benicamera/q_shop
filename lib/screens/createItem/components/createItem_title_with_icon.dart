@@ -4,13 +4,16 @@
  */
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/components/catSelector.dart';
 import 'package:q_shop/screens/createItem/components/createItem_editable_title.dart';
 
 class CreateItem_Title_Icon extends StatelessWidget {
   final int itemId = 1; //TODO: get item id
+  final Product product;
+  final ListProduct listProduct;
   const CreateItem_Title_Icon({
-    Key key,
+    Key key, this.product, this.listProduct,
 
   }) : super(key: key);
 
@@ -23,8 +26,8 @@ class CreateItem_Title_Icon extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          EditableItemTitle(),
-          CatSelector(),
+          EditableItemTitle(product: product, listProduct: listProduct,),
+          CatSelector(product: product, listProduct: listProduct,),
           Row(
             children: <Widget>[
               Padding(

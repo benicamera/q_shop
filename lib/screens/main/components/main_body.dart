@@ -8,7 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:q_shop/constants.dart';
 import 'package:q_shop/models/products.dart';
 
-import 'ListOverview.dart';
+import 'item_overview.dart';
 
 class Main_Body extends StatefulWidget {
   @override
@@ -29,17 +29,17 @@ class _Main_BodyState extends State<Main_Body> {
     try {
       Hive.registerAdapter(ShopListAdapter());
     }catch(err){
-      print("HIIIIEEEERRR: " + err.toString());
+      print(err.toString());
     }
     try {
       Hive.registerAdapter(ProductAdapter());
     }catch(err){
-      print("HIIIIEEEERRR: " + err.toString());
+      print(err.toString());
     }
     try {
       Hive.registerAdapter(ListProductAdapter());
     }catch(err){
-      print("HIIIIEEEERRR: " + err.toString());
+      print(err.toString());
     }
     return FutureBuilder(
       future: Hive.openBox('shopLists'),
@@ -50,7 +50,7 @@ class _Main_BodyState extends State<Main_Body> {
             return Text(
               snapshot.error.toString(), style: TextStyle(color: kRed),);
           else
-            return ListOverview();
+            return ItemOverview();
         }
         return SizedBox(
           child: CircularProgressIndicator(),
