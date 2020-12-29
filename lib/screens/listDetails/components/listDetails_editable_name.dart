@@ -1,34 +1,27 @@
-/*  createItem_editable_title.dart
-*   @author: Benjamin Dangl
-*   @version: 15.11.2020
- */
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 
 import '../../../constants.dart';
 
-class EditableItemTitle extends StatefulWidget {
-  final Product product;
-  final ListProduct listProduct;
+class EditableListName extends StatefulWidget {
+  final ShopList list;
 
-  const EditableItemTitle({Key key, this.product, this.listProduct})
-      : super(key: key);
-
+  const EditableListName({Key key, this.list}) : super(key: key);
   @override
-  _EditableItemTitleState createState() =>
-      _EditableItemTitleState(product, listProduct);
+  _EditableListNameState createState() => _EditableListNameState(list);
 }
 
-class _EditableItemTitleState extends State<EditableItemTitle> {
+class _EditableListNameState extends State<EditableListName> {
+  ShopList list;
   bool _isEditingText = false;
   TextEditingController _editingController;
-  String initialText = "Unbenannt";
-  final Product product;
-  final ListProduct listProduct;
+  String initialText;
 
-  _EditableItemTitleState(this.product, this.listProduct);
+  _EditableListNameState(ShopList _list){
+    list = _list;
+    initialText = list.name;
+  }
 
   @override
   void initState() {
@@ -43,11 +36,11 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
   }
 
   bool notTaken(String value) {
-    if (value == "NeW?1!83") return false;
-    var allProds = Hive.box('allProducts');
-    for (int i = 0; i < allProds.length; i++) {
-      Product prod = allProds.getAt(i);
-      if (prod.name == value) return false;
+    if (value == 'NeW?173') return false;
+    Box shopLists = Hive.box('shopLists');
+    for (int i = 0; i < shopLists.length; i++) {
+      ShopList _list = shopLists.getAt(i);
+      if (_list.name == value) return false;
     }
     return true;
   }
@@ -66,9 +59,7 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
             setState(() {
               if (notTaken(newValue)) {
                 initialText = newValue;
-                product.name = newValue;
-                listProduct.name = newValue;
-                listProduct.icon = Appicons.Letters[newValue.toLowerCase()[0]];
+                list.name = newValue;
               } else {
                 showDialog(
                     context: context,
@@ -79,7 +70,7 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
                           style: TextStyle(color: kRed),
                         ),
                         content: Text(
-                          "Entweder gibt es dieses Produkt schon oder der Name gefährdet die Sicherheit der App.",
+                          "Entweder gibt es diesen Namen schon oder der Name gefährdet die Sicherheit der App.",
                           style: TextStyle(color: kBlack),
                         ),
                         actions: [
@@ -117,3 +108,4 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
         ));
   }
 }
+

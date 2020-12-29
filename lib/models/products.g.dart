@@ -82,6 +82,8 @@ class ProductAdapter extends TypeAdapter<Product> {
     // padLeft(5, '0') setzt links vor den String 5 nullen
     // BSP: 'IconData(U+00000E6237)'
     //******************************************************************************************
+    if(string == null || string == "null")
+      return null;
     String sCodePoint = string;
     sCodePoint = string.substring(10, string.length - 1); //entfernt 'IconData(' und ')'
     //sCodePoint = 'U+00000E6237' mit BSP.
@@ -110,7 +112,7 @@ class ListProductAdapter extends TypeAdapter<ListProduct> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    print("Field 2 " + fields[2]);
+    print("Field 2 " + fields[2] + " name: " + fields[0]);
     return ListProduct(
       name: fields[0] as String,
       cat: fields[1] as String,
@@ -130,7 +132,10 @@ class ListProductAdapter extends TypeAdapter<ListProduct> {
     // padLeft(5, '0') setzt links vor den String 5 Nullen
     // BSP: 'IconData(U+00000E6237)'
     //******************************************************************************************
+    if(string == null || string == "null")
+      return null;
     String sCodePoint = string;
+    print("Stringlength " + string.length.toString() + " -> " + string);
     sCodePoint = string.substring(10, string.length - 1); //entfernt 'IconData(' und ')'
     //sCodePoint = '+00000E6237' mit BSP.
     int codePoint = int.parse(sCodePoint, radix: 16);

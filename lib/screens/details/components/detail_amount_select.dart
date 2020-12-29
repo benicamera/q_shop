@@ -41,11 +41,8 @@ class _DetailAmountState extends State<DetailAmount> {
 
   void validateInput(String input) {
     String _input = input.toString();
-
     _input = _input.replaceAll('.', '');
-
     _input = _input.replaceAll(',', '.');
-
     try {
       amount = double.parse(_input);
     } catch (on) {}
@@ -54,29 +51,25 @@ class _DetailAmountState extends State<DetailAmount> {
 
   String doubleToText(double num) {
     String _num = num.toString();
-
     _num = _num.replaceAll('.', ',');
-
     return _num;
   }
 
   void save(){
-    print("saving.. Getting box");
-    var box = Hive.box('shopLists');
-    print("Getting List out of Box at index " + index.toString());
-    ShopList currList = box.getAt(index);
-    print("Recieved List. Searching for Index of $name...");
-    int prodIndex = getProdIndex(currList);
-    print("Found i = $prodIndex. Saving amount ${amount.toString() + " " + unit} in object");
-    currList.products[prodIndex].amount = amount.toString() + " " + unit;
-    print("refreshing storage");
-    Hive.box('shopLists').putAt(index, currList);
-    print("saved");
+    try {
+      var box = Hive.box('shopLists');
+      ShopList currList = box.getAt(index);
+      int prodIndex = getProdIndex(currList);
+      ListProduct _product = currList.products[prodIndex];
+      _product.amount = amount.toString() + " " + unit;
+      Hive.box('shopLists').putAt(index, currList);
+    }catch(e){
+      product.amount = amount.toString() + " " + unit;
+    }
   }
 
   int getProdIndex(ShopList currList){
     List<ListProduct> prodList = currList.products;
-    print("--Objects to search from: $prodList");
     for(int i = 0; i < prodList.length; i++){
       if(prodList[i].name == name)
         return i;

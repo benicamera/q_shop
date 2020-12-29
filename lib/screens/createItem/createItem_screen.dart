@@ -8,6 +8,8 @@ import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/components/createItemBody.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
+import 'package:q_shop/screens/listOverview/listOverview_screen.dart';
+import 'package:q_shop/screens/main/main_screen.dart';
 import '../../constants.dart';
 
 class CreateItemScreen extends StatelessWidget {
@@ -65,6 +67,10 @@ class CreateItemScreen extends StatelessWidget {
             onPressed: () {
               print("Save and add");
               saveAndAdd(context);
+              Navigator.of(context).pop();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
           ) //TODO: Save
         ],
@@ -102,6 +108,7 @@ class CreateItemScreen extends StatelessWidget {
             ],
           );
         });
+    Navigator.of(context).pop();
   }
 
   void saveProduct(BuildContext context) {
@@ -150,21 +157,6 @@ class CreateItemScreen extends StatelessWidget {
         ),
       ),
       shadowColor: kBGColor,
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Icons.settings,
-            color: kGrey,
-          ),
-          tooltip: null,
-          onPressed: () {
-            print("Einstellungen");
-          } /*TODO: Settingsscreen aufrufen*/,
-        ),
-        SizedBox(
-          width: kDefPadding / 2,
-        )
-      ],
     );
   }
 }

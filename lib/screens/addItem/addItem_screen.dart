@@ -75,21 +75,6 @@ class _AddItemScreenState extends State<AddItemScreen> {
         ),
       ),
       shadowColor: kBGColor,
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Icons.settings,
-            color: kGrey,
-          ),
-          tooltip: null,
-          onPressed: () {
-            print("Einstellungen");
-          } /*TODO: Settingsscreen aufrufen*/,
-        ),
-        SizedBox(
-          width: kDefPadding / 2,
-        )
-      ],
     );
   }
 

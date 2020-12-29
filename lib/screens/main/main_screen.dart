@@ -27,6 +27,12 @@ class _MainScreenState extends State<MainScreen> {
   ];*/
 
   @override
+  void setState(fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey4,
