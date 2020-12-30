@@ -22,6 +22,7 @@ class SearchResult extends StatelessWidget {
 
   void toDetailScreen(BuildContext context) {
     ListProduct listProduct = ListProduct(name: item.name, cat: item.cat, icon: item.icon, amount: "2.0 Stk.", note: "Platz für Notizen",);
+    print("To Details: " + listProduct.amount);
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -64,10 +65,11 @@ class SearchResult extends StatelessWidget {
                         color:
                         kLightGrey2), //TODO: Icon einfügen und automatic font
                   ),
-                )
+                ),
               ],
             ),
           ),
-        ));
+        )
+    );
   }
 }

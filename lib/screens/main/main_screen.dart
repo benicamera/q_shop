@@ -6,8 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:q_shop/constants.dart';
 import 'package:q_shop/models/appicons_icons.dart';
-import 'package:q_shop/screens/createItem/createItem_screen.dart';
-import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/listOverview/components/listOverview_body.dart';
+import 'package:q_shop/screens/settings/settings_screen.dart';
 import 'components/main_body.dart';
 
 class MainScreen extends StatefulWidget {
@@ -66,7 +65,8 @@ class _MainScreenState extends State<MainScreen> {
           tooltip: null,
           onPressed: () {
             print("Einstellungen");
-          } /*TODO: Settingsscreen aufrufen*/,
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+          }
         ),
         SizedBox(
           width: kDefPadding / 2,

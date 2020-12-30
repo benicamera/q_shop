@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:q_shop/models/appicons_icons.dart';
-import 'package:q_shop/screens/settings/settings_screen.dart';
-import '../../constants.dart';
-import 'components/listOverview_body.dart';
+import 'package:q_shop/constants.dart';
+import 'components/settings_body.dart';
 
-class ListOverviewScreen extends StatefulWidget {
+class SettingsScreen extends StatefulWidget {
+
   @override
-  _ListOverviewScreenState createState() => _ListOverviewScreenState();
+  _SettingsScreenState createState() => _SettingsScreenState();
 }
 
-class _ListOverviewScreenState extends State<ListOverviewScreen> {
+class _SettingsScreenState extends State<SettingsScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey4,
       appBar: buildAppBar(),
-      body: ListOverview_Body(),
+      body: Settings_Body(),
     );
   }
 
@@ -36,16 +36,6 @@ class _ListOverviewScreenState extends State<ListOverviewScreen> {
       ),
       shadowColor: kBGColor,
       actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Appicons.Zahnrad,
-            color: kGrey,
-          ),
-          tooltip: null,
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
-          }
-        ),
         SizedBox(
           width: kDefPadding / 2,
         )
@@ -53,3 +43,4 @@ class _ListOverviewScreenState extends State<ListOverviewScreen> {
     );
   }
 }
+

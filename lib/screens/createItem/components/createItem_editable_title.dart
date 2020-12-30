@@ -43,7 +43,7 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
   }
 
   bool notTaken(String value) {
-    if (value == "NeW?1!83") return false;
+    if (value == "NeW?1!83" || value.toLowerCase()[0] == ".") return false;
     var allProds = Hive.box('allProducts');
     for (int i = 0; i < allProds.length; i++) {
       Product prod = allProds.getAt(i);

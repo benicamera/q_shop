@@ -21,6 +21,7 @@ class DetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(product.icon.toString());
     //returns total height and width
     Size size = MediaQuery
         .of(context)

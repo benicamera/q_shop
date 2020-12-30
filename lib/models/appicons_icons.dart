@@ -19,6 +19,14 @@ class Appicons {
   '8': Acht, '9': Neun, '0': O, '+': Plus1, "€": Euro, '?': Fragezeichen, '!': Ausrufezeichen,
   '_': underscore};
 
+  static const Map<int, IconData> CodePointIcons = {59723: Apfel1, 59722: Birne1, 59725: Banane1,
+    59674: K, 59694: Trauben1, 59693: Zitrone1, 59699: Tomate1, 59710: Karotte1,
+    59709: Kartoffeln, 59662: S, 59696: Wurst1, 59711: Fleisch1, 59712: Huhn1, 59713: Fleisch21,
+    59716: Fisch1, 59705: Milch1, 59706: Kaese1, 59708: Joghurt, 59719: Ei1, 59702: Osterei,
+    59704: Mehl1, 59717: Brot1, 59695: Weckle1, 59698: Toast1, 59721: Brezel1, 59718: Croissant,
+    59697: Pizza1, 59701: Nudel21, 59700: Nudel1, 59720: Bonbon1, 59707: Keks1, 59714: Eis1,
+    59715: Eis21};
+
 
   static const String _fontFamily = 'appicons';
 

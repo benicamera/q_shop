@@ -6,6 +6,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:q_shop/models/appicons_icons.dart';
 
 part 'products.g.dart';
 

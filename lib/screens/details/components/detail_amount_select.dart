@@ -40,6 +40,7 @@ class _DetailAmountState extends State<DetailAmount> {
   _DetailAmountState({this.index, this.name, this.amount, this.unit, this.add, this.product});
 
   void validateInput(String input) {
+    print("validate Input");
     String _input = input.toString();
     _input = _input.replaceAll('.', '');
     _input = _input.replaceAll(',', '.');
