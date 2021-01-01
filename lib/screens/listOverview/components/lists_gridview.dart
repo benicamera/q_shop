@@ -46,7 +46,7 @@ class _ListGridView extends State<ListGridView> {
     );
   }
   ShopList getAddList(){
-    ShopList addList = new ShopList(name: 'NeW?173', products: null);
+    ShopList addList = new ShopList(name: 'NeW?173', products: null, checked: null);
     return addList;
   }
 }

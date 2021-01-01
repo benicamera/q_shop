@@ -16,13 +16,16 @@ class ShopList{
   String name;
   @HiveField(1)
   List<ListProduct> products = List();
+  @HiveField(2)
+  List<ListProduct> checked = List();
 
-  ShopList({this.name, this.products});
+  ShopList({this.name, this.products, this.checked});
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'products': productsToString(),
+      'checked': productsToString(),
     };
   }
 
@@ -128,6 +131,9 @@ class ListProduct {
       'note': note
     };
   }
+
+  @override
+  String toString() => name;
 
   String getName()   => name;
 

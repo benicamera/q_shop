@@ -9,6 +9,7 @@ import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
 import 'package:q_shop/screens/main/main_screen.dart';
 import '../../constants.dart';
+import 'package:q_shop/models/publicFunctions.dart';
 
 class DetailsScreen extends StatelessWidget {
   final ListProduct product;
@@ -37,14 +38,16 @@ class DetailsScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          IconButton(
+          (add)?IconButton(
             icon: Icon(
               Icons.check,
               color: kGreen,
             ),
-            onPressed: () {},
-          ),
-          //TODO: action hinzufügen
+            onPressed: () {
+              check();
+              Navigator.of(context).pop();
+            },
+          ) : SizedBox(width: 1, height: 1,),
           (add)
               ? IconButton(
                   icon: Icon(
@@ -66,6 +69,12 @@ class DetailsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void check(){
+    print("in Check");
+    PublicFunctions.checkItem(product.name, 'shopLists', index);
+    print("after Check");
   }
 
   void removeFromList() {

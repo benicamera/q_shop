@@ -17,19 +17,24 @@ class ShopListAdapter extends TypeAdapter<ShopList> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ShopList(
-      name: fields[0] as String,
+      name:      fields[0] as String,
       products: (fields[1] as List)?.cast<ListProduct>(),
+      checked:  (fields[1] as List)?.cast<ListProduct>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, ShopList obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.products);
+      ..write(obj.products)
+      //NICHT AUTOGENERIERT
+      ..writeByte(2)
+      ..write(obj.checked);
+    //AUTOGENERIERT
   }
 
   @override

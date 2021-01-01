@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
+import 'package:q_shop/models/publicFunctions.dart';
 import 'package:q_shop/screens/listDetails/components/listDetails_editable_name.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -89,9 +90,8 @@ class ListDetailsBody extends StatelessWidget {
             Center(
               child: InkResponse(
                 onTap: () {
-                  //TODO: Löschen
-                  print("delete");
-                  delete1(context);
+                  if(list.name != 'Liste')
+                    delete1(context);
                 },
                 child: Container(
                     height: MediaQuery.of(context).size.height / 15,
@@ -99,10 +99,37 @@ class ListDetailsBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.all(Radius.circular(kWidgRadius)),
-                        color: kBluGreyS2),
+                        color: (list.name != 'Liste')? kBluGreyS2: kDarkGrey1),
                     child: Center(
                       child: Text(
                         "Löschen",
+                        style: TextStyle(color: (list.name != 'Liste')?kWhite : kGrey),
+                      ),
+                    )),
+              ),
+            )
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3.1,
+            ),
+            Center(
+              child: InkResponse(
+                onTap: () {
+                  checkedWiederherstellen();
+                },
+                child: Container(
+                    height: MediaQuery.of(context).size.height / 15,
+                    width: MediaQuery.of(context).size.height / 4,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(kWidgRadius)),
+                        color: kBluGreyS2),
+                    child: Center(
+                      child: Text(
+                        "Abgehakt wiederherstellen",
                         style: TextStyle(color: kWhite),
                       ),
                     )),
@@ -112,6 +139,10 @@ class ListDetailsBody extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void checkedWiederherstellen(){
+    PublicFunctions.restoreChecked('Schau in der Methode', 0);
   }
 
   void select(BuildContext context){

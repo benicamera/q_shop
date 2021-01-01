@@ -99,7 +99,7 @@ class _ListWidgetState extends State<ListWidget> {
                         onTap: () {
                           if(_formKey.currentState.validate() && _textEditingController.text[0] != " "){
                             //TODO: Text speichern und liste erstellen
-                            ShopList newList = new ShopList(name: _textEditingController.text, products: []);
+                            ShopList newList = new ShopList(name: _textEditingController.text, products: [], checked: []);
                             var listBox = Hive.box('shopLists');
                             listBox.add(newList);
                             Navigator.of(context).pop();

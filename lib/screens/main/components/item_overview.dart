@@ -34,14 +34,14 @@ class _ItemOverviewState extends State<ItemOverview> {
     print("ListBox: " + listBox.toString());
     if (listBox.isEmpty) {
       //TODO: Button which navigates to manage Lists screen or create list screen
-      listBox.add(ShopList(name: "test", products: [
+      listBox.add(ShopList(name: "Liste", products: [
         ListProduct(
             name: "Tomate",
             cat: "Gemüse",
             icon: Appicons.Tomate1,
             amount: "2 Stk.",
             note: "Schwarze Tomaten")
-      ]));
+      ], checked: []));
     }
     return FutureBuilder(
       future: getListIndex(),

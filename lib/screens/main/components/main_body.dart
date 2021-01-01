@@ -60,19 +60,4 @@ class _Main_BodyState extends State<Main_Body> {
       },
     );
   }
-
-    //TODO: Das stück code in ListOverview einbauen
-    /*
-    if (shop_list == null) {
-      return Column(
-        children: <Widget>[
-          Center(
-            widthFactor: null,
-            heightFactor: 4.0,
-            child: CreateList_Button_Big(),
-          )
-        ],
-      );
-    }
-    */
 }
