@@ -4,6 +4,7 @@ import 'package:q_shop/models/products.dart';
 import 'package:q_shop/models/publicFunctions.dart';
 import 'package:q_shop/screens/listDetails/components/listDetails_editable_name.dart';
 import 'package:hive/hive.dart';
+import 'package:q_shop/screens/restoreItems/restore_items_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
@@ -16,7 +17,7 @@ class ListDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("Detail " + list.name + " " + selected.toString());
-    return Column(
+    return SafeArea(child: Column(
       children: <Widget>[
         SizedBox(
           height: MediaQuery.of(context).size.height / 10,
@@ -110,6 +111,7 @@ class ListDetailsBody extends StatelessWidget {
             )
           ],
         ),
+        SizedBox(height: MediaQuery.of(context).size.height/20,),
         Row(
           children: <Widget>[
             SizedBox(
@@ -118,7 +120,7 @@ class ListDetailsBody extends StatelessWidget {
             Center(
               child: InkResponse(
                 onTap: () {
-                  checkedWiederherstellen();
+                  checkedWiederherstellen(context);
                 },
                 child: Container(
                     height: MediaQuery.of(context).size.height / 15,
@@ -129,7 +131,7 @@ class ListDetailsBody extends StatelessWidget {
                         color: kBluGreyS2),
                     child: Center(
                       child: Text(
-                        "Abgehakt wiederherstellen",
+                        "Produkte wiederherstellen",
                         style: TextStyle(color: kWhite),
                       ),
                     )),
@@ -138,18 +140,24 @@ class ListDetailsBody extends StatelessWidget {
           ],
         )
       ],
-    );
+    ));
   }
 
-  void checkedWiederherstellen(){
-    PublicFunctions.restoreChecked('Schau in der Methode', 0);
+  void checkedWiederherstellen(context){
+    Box box = Hive.box('shopLists');
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => RestoreItemScreen(
+              index: getIndex(box),
+            )));
   }
 
   void select(BuildContext context){
     print("select");
     final box = Hive.box("shopLists");
     changeSelectIndex(getIndex(box));
-    Navigator.of(context).pop();
+    Navigator.pop(context, true);
   }
 
   void delete1(BuildContext context) {

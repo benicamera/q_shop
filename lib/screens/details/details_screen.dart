@@ -38,7 +38,7 @@ class DetailsScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          (add)?IconButton(
+          (!add)?IconButton(
             icon: Icon(
               Icons.check,
               color: kGreen,
@@ -77,12 +77,15 @@ class DetailsScreen extends StatelessWidget {
     print("after Check");
   }
 
-  void removeFromList() {
+  void removeFromList(bool prodList) {
     final box = Hive.box('shopLists');
     ShopList list = box.getAt(index);
-    int prodI = getIndexFromProductName(list, product.name);
+    int prodI = (prodList)?getIndexFromProductName(list, product.name):getCheckIndex(list);
     print("DetailScreen: $prodI");
-    list.products.removeAt(prodI);
+    if(prodList)
+      list.products.removeAt(prodI);
+    else
+      list.checked.removeAt(prodI);
     box.putAt(index, list);
   }
 
@@ -106,7 +109,7 @@ class DetailsScreen extends StatelessWidget {
               child: Text("Löschen", style: TextStyle(color: kRed),),
               onPressed: (){
                 print("DetailsScreen: Löschen");
-                removeFromList();
+                removeFromList(true);
                 Navigator.of(context).pop();
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 Navigator.of(context).pop();
@@ -158,12 +161,31 @@ class DetailsScreen extends StatelessWidget {
             );
           });
     } else {
-      list.products.add(product);
-      box.putAt(index, list);
-      //Hive.box('allProducts').close();
+      addToProducts();
+      int checkInd = getCheckIndex(list);
+      if(checkInd > -1)
+        removeFromList(false);
+      print(box.getAt(index).products.toString());
       Navigator.of(context).pop();
       Navigator.of(context).pop();
     }
+  }
+  void addToProducts() {
+    final box = Hive.box('shopLists');
+    ShopList list = box.getAt(index);
+    list.products.add(product);
+    print(list.products.toString());
+    print(box.length.toString() + " index: " + index.toString());
+    box.putAt(index, list);
+    Hive.box("shopLists").putAt(index, list);
+  }
+  
+  int getCheckIndex(ShopList list){
+    for(int i=0; i<list.checked.length; i++){
+      if(product.name == list.checked[i].name)
+        return i;
+    }
+    return -1;
   }
 
   bool productInList(ListProduct product, ShopList list) {

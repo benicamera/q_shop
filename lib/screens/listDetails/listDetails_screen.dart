@@ -14,7 +14,7 @@ class ListDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGrey4,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       bottomNavigationBar: buildBottomAppBar(context),
       body: ListDetailsBody(selected: selected, list: list),
     );
@@ -33,10 +33,16 @@ class ListDetailsScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: kDarkGrey3,
       elevation: 2.0,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back, color: kWhite,),
+        onPressed: () {
+          Navigator.pop(context, true);
+        },
+      ),
       title: Text(
         "  " + kTitle,
         style: TextStyle(

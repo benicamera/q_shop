@@ -3,8 +3,12 @@ import 'package:q_shop/constants.dart';
 import 'package:q_shop/icons.dart';
 import 'package:q_shop/models/appicons_icons.dart';
 
-
-class ListScreen extends StatelessWidget {
+class ListScreen extends StatefulWidget{
+  const ListScreen({Key key}) : super(key: key);
+  @override
+  _ListScreen createState() => _ListScreen();
+}
+class _ListScreen extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +18,13 @@ class ListScreen extends StatelessWidget {
     );
   }
 }
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget{
+  const MyHomePage({Key key}) : super(key: key);
+  @override
+  _MyHomePage createState() => _MyHomePage();
+}
+
+class _MyHomePage extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -17,17 +17,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-  /*
-  int selectedItem = 0;
-  final tabs = [
-    Main_Body(),
-    Center(child: Text("Shopping")),
-    ListOverview_Body()
-  ];*/
-
   @override
-  void setState(fn) {
-    // TODO: implement setState
+  void setState(fn){
     super.setState(fn);
   }
 
