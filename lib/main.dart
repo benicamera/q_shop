@@ -11,7 +11,7 @@ import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/screens/listOverview/listOverview_screen.dart';
 import 'screens/main/main_screen.dart';
 import 'screens/shopping/Shopping_screen.dart';
-import 'file:///C:/Users/Beni/AndroidStudioProjects/q_shop/lib/screens/listOverview/components/listOverview_body.dart';
+import 'screens/shopping/Shopping_screen2.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ class MyAppState extends State<MyApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     MainScreen(),
-    ShoppingScreen(),
+    ShoppingScreen2(),
     ListOverviewScreen(),
   ];
   @override
