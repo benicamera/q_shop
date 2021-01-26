@@ -69,7 +69,7 @@ class ShopItemOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(size.width.toString() + " x " + size.height.toString());
+    print("ShopItem rebuilt");
     return Container(
       height: size.height / 5,
       width: size.width / 1,
@@ -84,10 +84,10 @@ class ShopItemOverlay extends StatelessWidget {
                     color: kBluGreyS1,
                     size: size.height / 7.5,
                   ),
-                  Text(
+                  SafeArea(child: Text(
                     product.name,
-                    style: TextStyle(color: kBluGreyS1, fontSize: 30),
-                  )
+                    style: TextStyle(color: kBluGreyS1, fontSize: ((30 / (product.name.length / 7)) > 30)? 30:30 / (product.name.length / 7)),
+                  ))
                 ],
               )),
           Padding(
@@ -125,14 +125,11 @@ class ShopItemOverlay extends StatelessWidget {
   }
 
   String shortNote(String note, BuildContext context) {
-    print("shortNote");
     Size size = MediaQuery.of(context).size;
     int charNum = ((size.width - 10) ~/ 10);
     charNum *= size.height ~/ 230;
     if (charNum < note.length) {
-      print(charNum.toString() + " < " + note.length.toString());
       String _note = note.substring(0, charNum - 3) + "...";
-      print(_note);
       return _note;
     }
     return note;

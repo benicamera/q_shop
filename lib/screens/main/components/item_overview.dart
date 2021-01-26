@@ -5,6 +5,7 @@ import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/main/components/main_shopping_list_view.dart';
 import 'package:q_shop/screens/main/components/main_divider_bar.dart';
+import 'package:q_shop/screens/main/components/proposal_overview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
@@ -17,12 +18,20 @@ class ItemOverview extends StatefulWidget {
 class _ItemOverviewState extends State<ItemOverview> {
   final listBox = Hive.box('shopLists');
   int listIndex;
+  void callBack() {
+    setState(() {});
+  }
 
   Future<int> getListIndex() async {
     final prefs = await SharedPreferences.getInstance();
     final index = prefs.getInt("currentListIndex");
-    if (index == null) {
+    print("ItemOverview getListIndex: " +
+        index.toString() +
+        " " +
+        listBox.length.toString());
+    if (index == null || index >= listBox.length) {
       listIndex = 0;
+      prefs.setInt("currentListIndex", 0);
       return 0;
     }
     listIndex = index;
@@ -31,9 +40,8 @@ class _ItemOverviewState extends State<ItemOverview> {
 
   @override
   Widget build(BuildContext context) {
-    print("ListBox: " + listBox.toString());
+    print("ItemOverview - build: ListBox: " + listBox.toString());
     if (listBox.isEmpty) {
-      //TODO: Button which navigates to manage Lists screen or create list screen
       listBox.add(ShopList(name: "Liste", products: [
         ListProduct(
             name: "Tomate",
@@ -54,6 +62,10 @@ class _ItemOverviewState extends State<ItemOverview> {
         if (snapshot.hasData) {
           listIndex = snapshot.data;
           ShopList shopList = listBox.getAt(snapshot.data);
+          print("ItemOverview - FutureBuilder: " +
+              shopList.name +
+              " " +
+              shopList.products.toString());
           return ListView(
             padding: EdgeInsets.only(top: 5, right: 23, bottom: 5),
             children: <Widget>[
@@ -64,13 +76,15 @@ class _ItemOverviewState extends State<ItemOverview> {
                 child: Align(
                   // ignore: deprecated_member_use
                   child: ValueListenableBuilder(
-                    valueListenable: Hive.box('shopLists').listenable(),
+                      valueListenable: Hive.box('shopLists').listenable(),
                       builder: (context, Box listBox, _) {
                         return ShoppingListView(
-                          list: listBox.getAt(listIndex),
-                          index: listIndex,
-                          isProposals: false,
-                        );
+                            list: listBox.getAt(listIndex),
+                            index: listIndex,
+                            isProposals: false,
+                            callBack: () {
+                              callBack();
+                            });
                       }),
                   alignment: Alignment.centerLeft,
                 ),
@@ -80,15 +94,12 @@ class _ItemOverviewState extends State<ItemOverview> {
                   child: DividerBar(
                     title: "Vorschläge",
                   )),
+
               Align(
-                alignment: Alignment.centerLeft,
-                child: ShoppingListView(
-                  list: ShopList(name: "", products: []),
-                  index: listIndex,
-                  isProposals: true,
-                ), //TODO: Vorschläge einfügen
-              )
-            ], //TODO: Title der Liste Padding(
+                  alignment: Alignment.centerLeft,
+                  child: Container(child: ProposalOverview(index: listIndex)) //TODO: Vorschläge einfügen
+                  )
+            ],
           );
         }
         return Center(

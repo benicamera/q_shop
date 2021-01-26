@@ -45,6 +45,11 @@ class _EditableItemTitleState extends State<EditableItemTitle> {
   bool notTaken(String value) {
     //entweder das Label von "Neues Item erstellen" oder kein Buchstabe
     if (value == "NeW?1!83" || !(96 < value.toLowerCase().codeUnitAt(0) && value.toLowerCase().codeUnitAt(0) < 123)) return false;
+    //Kein Leerzeichen. Erstes Zeichen beretis geprüft
+    for(int i=1; i<value.length; i++){
+      if(value[i] == " ")
+        return false;
+    }
     var allProds = Hive.box('allProducts');
     for (int i = 0; i < allProds.length; i++) {
       Product prod = allProds.getAt(i);

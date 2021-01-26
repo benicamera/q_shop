@@ -29,10 +29,8 @@ class _AddItemScreenBodyState extends State<AddItemScreenBody> {
   }
 
   void refreshResults(String value) {
-    print(" ... refreshing...");
     searchResults.removeRange(1, searchResults.length);
     var res = getSearchResults(value).sublist(0, 7);
-    print("refreshing: got all results");
     for(Product p in res){
       print(p.name);
       setState(() {
@@ -45,19 +43,14 @@ class _AddItemScreenBodyState extends State<AddItemScreenBody> {
 
   Future<bool> initAllProducts() async{
     final prodBox = await Hive.openBox('allProducts');
-    print("addItem: $prodBox");
     if(prodBox.isEmpty){
-      print("addItem: $prodBox is empty");
       for(Product p in DefaultPrefs.defProducts){
-        print("addItem: $p");
           prodBox.add(p);
           allProducts.add(p);
       }
     }else {
-      print("addItem: $prodBox is not empty");
       for (int i = 0; i < prodBox.length; i++) {
         Product product = prodBox.getAt(i);
-        print("addItem: tries to add ${product.name}");
         allProducts.add(product);
       }
     }

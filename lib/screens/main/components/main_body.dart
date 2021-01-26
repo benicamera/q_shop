@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:q_shop/constants.dart';
 import 'package:q_shop/models/products.dart';
+import 'package:q_shop/models/pyCall.dart';
 
 import 'item_overview.dart';
 
@@ -24,40 +25,41 @@ class _Main_BodyState extends State<Main_Body> {
 
   //TODO: Kommt von JSON-Liste. Davor das Script ausführen
   var recommendations = new List();
+
   @override
   Widget build(BuildContext context) {
     try {
       Hive.registerAdapter(ShopListAdapter());
-    }catch(err){
+    } catch (err) {
       print(err.toString());
     }
     try {
       Hive.registerAdapter(ProductAdapter());
-    }catch(err){
+    } catch (err) {
       print(err.toString());
     }
     try {
       Hive.registerAdapter(ListProductAdapter());
-    }catch(err){
+    } catch (err) {
       print(err.toString());
     }
-    return FutureBuilder(
-      future: Hive.openBox('shopLists'),
-      // ignore: missing_return
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError)
-            return Text(
-              snapshot.error.toString(), style: TextStyle(color: kRed),);
-          else
-            return ItemOverview();
+   return FutureBuilder(
+            future: Hive.openBox('shopLists'),
+            // ignore: missing_return
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasError)
+                  return Text(
+                    snapshot.error.toString(), style: TextStyle(color: kRed),);
+                else
+                  return ItemOverview();
+              }
+              return SizedBox(
+                child: CircularProgressIndicator(),
+                width: 60,
+                height: 60,
+              );
+            },
+          );
         }
-        return SizedBox(
-          child: CircularProgressIndicator(),
-          width: 60,
-          height: 60,
-        );
-      },
-    );
-  }
-}
+      }

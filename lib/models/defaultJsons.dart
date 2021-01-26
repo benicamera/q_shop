@@ -34,8 +34,8 @@ class DefaultPrefs {
         Product(name: "Ei", icon: Appicons.Ei1, cat: "Ei"),
         Product(name: "Osterei", icon: Appicons.Osterei, cat: "Ei"),
 
-        Product(name: "Mehl", icon: Appicons.Mehl1, cat: "Zutaten"),
-        Product(name: "Zucker", icon: Appicons.Mehl1, cat: "Zutaten"),
+        Product(name: "Mehl", icon: Appicons.Mehl1, cat: "Sonstiges"),
+        Product(name: "Zucker", icon: Appicons.Mehl1, cat: "Sonstiges"),
 
         Product(name: "Roggenbrot", icon: Appicons.Brot1, cat: "Backwaren"),
         Product(name: "Brötchen", icon: Appicons.Weckle1, cat: "Backwaren"),

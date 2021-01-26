@@ -1,4 +1,4 @@
-//Erst automatisch generiert, dann modifiziert
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'products.dart';
 
@@ -17,9 +17,9 @@ class ShopListAdapter extends TypeAdapter<ShopList> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ShopList(
-      name:      fields[0] as String,
+      name: fields[0] as String,
       products: (fields[1] as List)?.cast<ListProduct>(),
-      checked:  (fields[1] as List)?.cast<ListProduct>(),
+      checked: (fields[2] as List)?.cast<ListProduct>(),
     );
   }
 
@@ -31,10 +31,8 @@ class ShopListAdapter extends TypeAdapter<ShopList> {
       ..write(obj.name)
       ..writeByte(1)
       ..write(obj.products)
-      //NICHT AUTOGENERIERT
       ..writeByte(2)
       ..write(obj.checked);
-    //AUTOGENERIERT
   }
 
   @override
@@ -58,11 +56,10 @@ class ProductAdapter extends TypeAdapter<Product> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    print("Field 2 " + fields[2] + " name: " + fields[0]);
     return Product(
       name: fields[0] as String,
       cat: fields[1] as String,
-      icon: stringToIconData(fields[2] as String),
+      icon: stringToIconData(fields[2] as String)
     );
   }
 
@@ -100,7 +97,7 @@ class ProductAdapter extends TypeAdapter<Product> {
     return Appicons.CodePointIcons[codePoint];
   }
 
-  //AUTOGENERIERT
+  //Autogeneriert
   @override
   int get hashCode => typeId.hashCode;
 
@@ -122,11 +119,10 @@ class ListProductAdapter extends TypeAdapter<ListProduct> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    print("Field 2 " + fields[2] + " name: " + fields[0]);
     return ListProduct(
       name: fields[0] as String,
       cat: fields[1] as String,
-      icon: stringToIconData(fields[2] as String),
+      icon: stringToIconData(fields[2]),
       amount: fields[3] as String,
       note: fields[4] as String,
     );
@@ -153,6 +149,7 @@ class ListProductAdapter extends TypeAdapter<ListProduct> {
     print("codepoint: " + codePoint.toString());
     return IconData(codePoint, fontFamily: 'appicons');
   }
+  //Autogeneriert
 
   @override
   void write(BinaryWriter writer, ListProduct obj) {

@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:q_shop/models/api.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/details/components/detail_body.dart';
 import 'package:q_shop/screens/main/main_screen.dart';
@@ -15,8 +16,9 @@ class DetailsScreen extends StatelessWidget {
   final ListProduct product;
   final int index;
   final bool add;
+  final Function callBack;
 
-  const DetailsScreen({Key key, this.product, this.index, this.add})
+  const DetailsScreen({Key key, this.product, this.index, this.add, this.callBack})
       : super(key: key);
 
 //TODO: SAVE EVERYTHING WHEN GOING BACK
@@ -54,8 +56,10 @@ class DetailsScreen extends StatelessWidget {
                     Icons.add,
                     color: kGreen,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     addToList(context);
+                    await writePositiveKNN(product.name);
+                    callBack;
                   },
                 )
               : IconButton(
@@ -72,21 +76,19 @@ class DetailsScreen extends StatelessWidget {
   }
 
   void check(){
-    print("in Check");
     PublicFunctions.checkItem(product.name, 'shopLists', index);
-    print("after Check");
   }
 
-  void removeFromList(bool prodList) {
+  ShopList removeFromList(bool prodList) {
     final box = Hive.box('shopLists');
     ShopList list = box.getAt(index);
     int prodI = (prodList)?getIndexFromProductName(list, product.name):getCheckIndex(list);
-    print("DetailScreen: $prodI");
     if(prodList)
       list.products.removeAt(prodI);
     else
       list.checked.removeAt(prodI);
     box.putAt(index, list);
+    return list;
   }
 
   void asKForRemoval(BuildContext context) {
@@ -114,6 +116,7 @@ class DetailsScreen extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
+                callBack;
               },
             )
           ],
@@ -131,7 +134,7 @@ class DetailsScreen extends StatelessWidget {
     return 0;
   }
 
-  void addToList(BuildContext context) {
+  Future<void> addToList(BuildContext context) async{
     print("DetailScreen: in addToList");
     final box = Hive.box('shopLists');
     ShopList list = box.getAt(index);
@@ -161,23 +164,34 @@ class DetailsScreen extends StatelessWidget {
             );
           });
     } else {
-      addToProducts();
+      ShopList list = box.getAt(index);
       int checkInd = getCheckIndex(list);
       if(checkInd > -1)
-        removeFromList(false);
-      print(box.getAt(index).products.toString());
+        list = removeFromList(false);
+      final _box = Hive.box('shopLists');
+      ShopList _list = list;
+      _list.products.add(product);
+      print("DetailsScreen - addToList 1: " + _list.products.toString());
+      box.putAt(index, _list);
+
+      await writePositiveKNN(product.name);
+
+      print("DetailsScreen - addToList: " + Hive.box("shopLists").getAt(index).products.toString());
+      print("DetailsScreen - addToList: " + _box.getAt(index).products.toString());
       Navigator.of(context).pop();
       Navigator.of(context).pop();
     }
   }
+
   void addToProducts() {
     final box = Hive.box('shopLists');
     ShopList list = box.getAt(index);
-    list.products.add(product);
-    print(list.products.toString());
-    print(box.length.toString() + " index: " + index.toString());
-    box.putAt(index, list);
-    Hive.box("shopLists").putAt(index, list);
+    ShopList _list = list;
+    _list.products.add(product);
+    print(_list.products.toString());
+    box.putAt(index, _list);
+    print("DetailsScrren - addToProducts: " + box.getAt(index).products.toString() + " at " + index.toString());
+    print("DetialsScreen - addToProducts: " + Hive.box("shopLists").getAt(index).products.toString() + " at " + index.toString());
   }
   
   int getCheckIndex(ShopList list){

@@ -55,7 +55,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
           tooltip: null,
           onPressed: () {
-            print("Einstellungen");
             Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
           }
         ),

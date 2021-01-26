@@ -5,9 +5,7 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:q_shop/icons.dart';
 import 'package:q_shop/models/appicons_icons.dart';
-import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/addItem/addItem_screen.dart';
 import 'package:q_shop/screens/details/details_screen.dart';
 
@@ -16,21 +14,22 @@ import '../constants.dart';
 class ItemWidget extends StatelessWidget {
   final listProduct;
   final int index;
+  final Function callBack;
 
   ItemWidget(
-      {this.listProduct, this.index});
+      {this.listProduct, this.index, this.callBack});
 
   void toDetailScreen(BuildContext context) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => DetailsScreen(
-                  product: listProduct, index: index, add: false,
+                  product: listProduct, index: index, add: false, callBack: callBack
                 )));
   }
 
   void toNewItem(BuildContext context) {
-    print("To new Item");
+    print("ItemButton: To new Item");
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddItemScreen(index: index,)));
   }
@@ -47,10 +46,10 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onLongPress: () {
-          print("Longpress");
+          print("ItemButton Longpress");
         }, //TODO: Beweglich Löschen oder abhaken
         onTap: () {
-          print("tapped");
+          print("ItemButton tapped");
           listProduct.name == "NeW?1!83" ? toNewItem(context) : toDetailScreen(context); //TODO:CODE
         },
         child: Container(

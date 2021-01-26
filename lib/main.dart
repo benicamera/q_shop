@@ -7,17 +7,41 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:q_shop/constants.dart';
+import 'package:q_shop/models/api.dart';
 import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/screens/listOverview/listOverview_screen.dart';
 import 'screens/main/main_screen.dart';
 import 'screens/shopping/Shopping_screen.dart';
-import 'screens/shopping/Shopping_screen2.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
+  Box box = await Hive.openBox("KNNJson");
+  if(box.isEmpty)
+    await initKNNJson();
+  print(box.getAt(0).toString());
+  await negative();
   runApp(MyApp());
+}
+
+Future<void> negative() async{
+  Box box = Hive.box("KNNJson");
+  try {
+    dynamic lastDay = box.getAt(2);
+    if (lastDay == null || lastDay == 0)
+      box.putAt(2, 365);
+  }catch (error){
+    print("Error: " + error.toString() + "; Length: " + box.length.toString());
+    while(box.length < 3) {
+      print("ADD");
+      box.add(null);
+    }
+    print("NO ADD");
+    box.putAt(2, 365);
+  }
+  writeNegative();
 }
 
 
@@ -32,7 +56,7 @@ class MyAppState extends State<MyApp> {
   int _selectedTab = 0;
   final _pageOptions = [
     MainScreen(),
-    ShoppingScreen2(),
+    ShoppingScreen(),
     ListOverviewScreen(),
   ];
   @override

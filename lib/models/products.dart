@@ -11,7 +11,7 @@ import 'package:q_shop/models/appicons_icons.dart';
 part 'products.g.dart';
 
 @HiveType(typeId: 100)
-class ShopList{
+class ShopList {
   @HiveField(0)
   String name;
   @HiveField(1)
@@ -80,6 +80,7 @@ class Product {
 
   Product({this.name, this.cat, this.icon});
 
+
   Map<String, dynamic> toMap() {
     return {
       'name':     name,
@@ -121,6 +122,7 @@ class ListProduct {
   String note;
 
   ListProduct({this.name, this.cat, this.icon, this.amount, this.note});
+
 
   Map<String, dynamic> toMap() {
     return {

@@ -12,12 +12,13 @@ class ShoppingListView extends StatefulWidget {
   ShopList list;
   int index;
   bool isProposals = false;
+  final Function callBack;
 
-  ShoppingListView({this.list, this.index, this.isProposals});
+  ShoppingListView({this.list, this.index, this.isProposals, this.callBack});
 
   @override
   _ShoppingListView createState() => _ShoppingListView(
-      help_list: this.list, isProposals: this.isProposals, index: this.index);
+      help_list: this.list, isProposals: this.isProposals, index: this.index, callBack: callBack);
 }
 
 class _ShoppingListView extends State<ShoppingListView> {
@@ -26,8 +27,9 @@ class _ShoppingListView extends State<ShoppingListView> {
   ShopList help_list;
   bool isProposals = false;
   int numElements;
+  final Function callBack;
 
-  _ShoppingListView({this.help_list, this.index, this.isProposals});
+  _ShoppingListView({this.callBack, this.help_list, this.index, this.isProposals});
 
   bool noNew(){
     for(int i = 0; i < help_list.products.length; i++){
@@ -60,7 +62,7 @@ class _ShoppingListView extends State<ShoppingListView> {
           note: ""));
     list.removeRange(1, list.length);
     for (var e in help_list.products) {
-      print("shooping_list_view name of product to add: " + e.name);
+      print("ShoppingListView - build: shooping_list_view name of product to add: " + e.name);
       if(!onList(e.name))
         list.add(e);
     }
@@ -75,11 +77,12 @@ class _ShoppingListView extends State<ShoppingListView> {
       //TODO: ABSOLUT NICHTS DOPPELT AUF DEN LISTEN HABEN!!
       physics: ScrollPhysics(),
       itemBuilder: (context, int i) {
-        print(list);
+        print("ShoppingListView - GridviewBuilder" + list.toString());
         return (!isProposals)
                 ? ItemWidget(
                     listProduct: list[i],
                     index: index,
+                    callBack: callBack,
                   )
                 : Text("Hier steht ein Vorschlag") //TODO: Bedingung ändern
             ; //TODO: Liste automatisch übernehmen
