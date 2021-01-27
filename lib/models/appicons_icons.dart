@@ -6,7 +6,7 @@
 //      fonts:
 //       - asset: fonts/appicons.ttf
 
-
+import '';
 import 'package:flutter/widgets.dart';
 import 'dart:collection';
 class Appicons {

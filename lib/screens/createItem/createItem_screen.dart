@@ -4,6 +4,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:q_shop/icons.dart';
 import 'package:q_shop/models/appicons_icons.dart';
 import 'package:q_shop/models/products.dart';
 import 'package:q_shop/screens/createItem/components/createItemBody.dart';
@@ -19,7 +20,7 @@ class CreateItemScreen extends StatelessWidget {
   ListProduct lProduct = ListProduct(
       name: "Unbenannt",
       cat: "Sonstige",
-      icon: Appicons.Plus1,
+      icon: Appicons.Letters["u"],
       amount: "2,0 Stk.",
       note: "Platz für Notizen");
 
@@ -51,26 +52,12 @@ class CreateItemScreen extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.save_alt,
-              color: kGreen,
-            ),
-            onPressed: () {
-              print("Save");
-              saveProduct(context);
-            },
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.check,
+              Appicons.Plus1,
               color: kGreenH1,
             ),
             onPressed: () {
               print("Save and add");
               saveAndAdd(context);
-              Navigator.of(context).pop();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
             },
           ) //TODO: Save
         ],
@@ -81,8 +68,6 @@ class CreateItemScreen extends StatelessWidget {
   void saveAndAdd(BuildContext context){
     saveProduct(context);
     var listBox = Hive.box('shopLists');
-    ShopList list = listBox.getAt(index);
-    list.products.add(lProduct);
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -113,6 +98,8 @@ class CreateItemScreen extends StatelessWidget {
 
   void saveProduct(BuildContext context) {
     var allProdsBox = Hive.box('allProducts');
+    product.icon = Appicons.Letters[product.name.toLowerCase()[0]];
+    print("Icon: " + product.icon.toString());
     allProdsBox.add(product);
     showDialog(
         context: context,

@@ -55,7 +55,7 @@ class _CatSelector extends State<CatSelector> {
               print(newValue + " 2");
             });
           },
-          items: <String>['Obst', 'Gemüse', 'Sonstige'] //TODO: Alle Kategorien hinzufügen
+          items: <String>['Obst', 'Gemüse', 'Fleisch', 'Wurst', 'Fisch', 'Milch', 'Ei', 'Backwaren', 'Nudeln', 'Süßwaren', 'Sonstige'] //TODO: Alle Kategorien hinzufügen
               .map<DropdownMenuItem<String>>((String value){
             return DropdownMenuItem<String>(
               value: value,

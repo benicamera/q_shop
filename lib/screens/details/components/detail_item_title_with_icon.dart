@@ -19,6 +19,7 @@ class DetailItemTitleWithIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    print("Icon. " + product.cat);
     return Padding(
       padding: EdgeInsets.symmetric(
           vertical: kDefPadding * 2, horizontal: width / 21),
@@ -46,9 +47,7 @@ class DetailItemTitleWithIcon extends StatelessWidget {
                   child: Hero(
                     tag: (product.name + "1"),
                     child: Icon(
-                      (wasCreated())
-                          ? Appicons.Letters[product.name[0]]
-                          : product.getIcon(),
+                      product.icon,
                       color: kBluGreyS1,
                       size: size.width * size.height / 1360,
                     ),
