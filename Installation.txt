@@ -1,0 +1,26 @@
+Android:
+Sicherheitshalber Android Studio wie hier beschrieben herunterladen:
+  https://dev.to/mjmaurya/how-to-install-flutter-configure-with-android-studio-and-create-a-simple-app-5g12
+  ***Auf jeden Fall die Flutter-SDK wie beschrieben herunterladen***
+  Den letzten Schritt mit dem Projekt lassen. Dafür über *File -> New -> Project from Version Control -> GitHub* das Projekt importieren.
+
+Projekt wirklich herunterladen (am Besten auf Desktop):
+Dem Link folgen und Projekt auf Handy laden: https://flutter-examples.com/run-test-flutter-apps-directly-on-real-android-device/
+Ihr könnt probieren, den "flutter run"-Befehl mit "flutter run --release" ersetzen und probieren, das variiert immer, ob es funktioniert. Wenn, dann ist "--release" besser.
+
+Troubleshooting: 
+Immer "flutter doctor" machen um den Fehler zu sehen. Fehler beheben -> Selbst, Internet oder mich (Benjamin) fragen.
+
+Nur virtuell testen: (Ihr müsst in die BIOS-Einstellungen des PC's zugreifen können)
+Diesem Link folgen: https://www.dev2qa.com/how-to-create-android-virtual-device-avd-in-android-studio/
+ggf im BOIS irgendetwas mit "virtual" oder "simulation" aktivieren. Hängt von Motherboard und vom Prozessor ab.
+Bei Problemen melden!
+
+iOS: (Nicht getestet!)
+Man braucht einen Mac!
+X-Code herunterladen.
+
+Diesem Link folgen:
+https://medium.com/@mpapag1995/how-to-deploy-a-flutter-app-to-an-ios-device-48b286d921d3
+
+Wenn es nicht funktioniert: Selbst schauen oder gemeinsam mit mir (Benjamin) dran arbeiten (hätte zur Not noch einen MacBook)
