@@ -1,10 +1,9 @@
-qShop - Flutter - Frontend
+# qShop
 
-zum ausführen: Android Studio. Ich weiß nicht ob ihr euch das antun wollt.
+qShop is a shopping list app written in Dart using Flutter framework.
+It was a project in high school computer science basics.
 
-Code ist unter lib, assets unter assets, alles ander ist unwichtig.
+It's buggy and more like a truck made out of unfitting spare parts ;-)
+In addition to that, the API of the neural network in the cloud is no longer running.
 
-IconData codepoint = Hexadecimal als ganze zahl
-
-
-
+We recommend using Bring!
