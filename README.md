@@ -7,3 +7,5 @@ It's buggy and more like a truck made out of unfitting spare parts ;-)
 In addition to that, the API of the neural network in the cloud is no longer running.
 
 We recommend using Bring!
+
+## This repo is archived
